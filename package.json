@@ -1,0 +1,12 @@
+{
+  "name": "argo-field-gateway-v2",
+  "version": "1.0.0",
+  "description": "Gateway ARGO per WhatsApp/Meta, parsing operativo e gestione immagini.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
