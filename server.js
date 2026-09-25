@@ -33,7 +33,24 @@ app.post("/webhook", (req, res) => {
 
   res.sendStatus(200);
 });
+app.get("/argo/wearable/callback", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    service: "argo-field-gateway-v2",
+    channel: "wearable",
+    endpoint: "/argo/wearable/callback"
+  });
+});
 
+app.post("/argo/wearable/callback", (req, res) => {
+  console.log("Wearable callback ricevuta:");
+  console.log(JSON.stringify(req.body, null, 2));
+
+  res.status(200).json({
+    status: "received",
+    channel: "wearable"
+  });
+});
 app.listen(PORT, () => {
   console.log("ARGO Field Gateway v2 attivo sulla porta " + PORT);
 });
