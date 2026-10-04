@@ -2,7 +2,12 @@ const express = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const VERIFY_TOKEN = process.env.VERIFY_TOKEN || "argo-test-token";
+const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+
+if (typeof VERIFY_TOKEN !== "string" || VERIFY_TOKEN.trim().length === 0) {
+  console.error("Configurazione non valida: VERIFY_TOKEN è obbligatorio e non può essere vuoto.");
+  process.exit(1);
+}
 
 app.use(express.json());
 
