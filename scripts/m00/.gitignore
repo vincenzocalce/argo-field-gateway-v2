@@ -1,0 +1,6 @@
+# Defense in depth; real config, credentials and evidence belong OUTSIDE git.
+*.local
+pg_service.conf
+.pgpass
+pgpass
+M00_*/
