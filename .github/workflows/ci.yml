@@ -1,0 +1,61 @@
+name: Gateway CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: reference-pr1-token
+            ref: 26f6d59f1b866bf631bed2ed7fb886d2492f3591
+            command: npm test
+          - name: reference-pr2-5v
+            ref: 8432925c9cc95fce0c8a9417c0038e7d9d2ef3be
+            command: npm run test:5v
+          - name: integration-token
+            ref: ""
+            command: npm test
+          - name: integration-5v
+            ref: ""
+            command: npm run test:5v
+          - name: integration-aasa
+            ref: ""
+            command: npm run test:aasa
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          # Empty ref uses the event revision (PR merge commit for pull_request).
+          ref: ${{ matrix.ref }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24.19.0'
+          # No cache: the base repository has no lockfile.
+      - name: Record revision and runtime
+        run: |
+          git rev-parse HEAD
+          node --version
+          npm --version
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci --ignore-scripts --no-audit --no-fund
+          else
+            echo "::warning::No committed npm lockfile; dependency resolution may vary between runs."
+            npm install --package-lock=false --ignore-scripts --no-audit --no-fund
+          fi
+      - name: Record resolved dependency tree
+        run: npm ls --all
+      - name: Run required suite
+        run: ${{ matrix.command }}
