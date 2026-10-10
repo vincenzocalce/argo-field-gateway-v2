@@ -1,4 +1,6 @@
 const express = require("express");
+const fs = require("node:fs");
+const path = require("node:path");
 
 const { observability5v } = require("./observability-5v");
 
@@ -7,10 +9,18 @@ function createApp(options = {}) {
   if (typeof VERIFY_TOKEN !== "string" || VERIFY_TOKEN.trim().length === 0) {
     throw new Error("Configurazione non valida: VERIFY_TOKEN è obbligatorio e non può essere vuoto.");
   }
+  const appleAppSiteAssociation = JSON.parse(
+    fs.readFileSync(path.join(__dirname, ".well-known/apple-app-site-association"), "utf8")
+  );
   const app = express();
 
   app.use(observability5v(options));
   app.use(express.json());
+
+  // Exact extensionless endpoint; preserve the existing middleware order.
+  app.get(/^\/\.well-known\/apple-app-site-association$/, (req, res) => {
+    res.status(200).type("application/json").json(appleAppSiteAssociation);
+  });
 
   app.get("/", (req, res) => {
     res.json({

@@ -70,3 +70,13 @@ Non modifica protezioni del branch e non impedisce da sola un merge manuale:
 per quel vincolo rendere obbligatori i due check integration nelle regole del repository.
 
 PR #1/#2/#3/#4 e main non modificati da questa proposta. Nessun merge automatico.
+
+
+## Integrazione AASA — 10/10/2026
+
+Il branch integration/aasa-token-5v estende PR #5 con AASA della PR #4.
+La matrice aggiunge integration-aasa (npm run test:aasa) sul medesimo ref evento.
+Verifica locale: token 8/8, 5V 8/8, AASA 6/6, zero skip/fail; Node 24.19.0,
+npm 11.9.0, Express 4.22.3 da npm ci. Dettagli e gap requisiti in AASA.md.
+Lo stato CI della PR #5 sopra riportato è storico e non certifica questa revisione.
+Nessuna deduzione su dominio pubblico, deploy, build iOS, PostgreSQL TEST o M1.
