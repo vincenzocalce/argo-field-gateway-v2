@@ -1,13 +1,9 @@
-const { createHash } = require("node:crypto");
+const { missionReference } = require("./src/privacy");
 const { createApp } = require("./src/app");
 const { createDatabase, ensureSchema, getDatabaseDiagnostics } = require("./src/database");
 
 const PORT = process.env.PORT || 3000;
 const database = createDatabase(process.env.DATABASE_URL);
-
-function missionReference(id) {
-  return createHash("sha256").update(String(id)).digest("hex").slice(0, 12);
-}
 
 async function logDatabaseDiagnostics() {
   const diagnostics = await getDatabaseDiagnostics(database);
