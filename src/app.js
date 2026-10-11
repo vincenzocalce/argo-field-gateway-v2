@@ -1,12 +1,11 @@
 const express = require("express");
-const { createHash } = require("node:crypto");
+const { missionReference } = require("./privacy");
 const { validateMission } = require("./validation");
 const { saveMission, findMission } = require("./database");
 
-function missionReference(req) {
+function missionReferenceFromRequest(req) {
   const rawId = req.body?.id || req.params?.id || req.path.match(/^\/argo\/missions\/([^/]+)$/)?.[1];
-  if (!rawId) return undefined;
-  return createHash("sha256").update(String(rawId)).digest("hex").slice(0, 12);
+  return missionReference(rawId);
 }
 
 function requestChannel(path) {
@@ -35,7 +34,7 @@ function createApp({ database = null, apiToken, verifyToken, logger = console } 
         status_code: res.statusCode,
         duration_ms: Number(durationMs.toFixed(1))
       };
-      const missionRef = missionReference(req);
+      const missionRef = missionReferenceFromRequest(req);
       if (missionRef) event.mission_ref = missionRef;
       logger.log(JSON.stringify(event));
     });
