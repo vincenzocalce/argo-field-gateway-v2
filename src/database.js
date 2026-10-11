@@ -40,4 +40,27 @@ async function findMission(database, id) {
   return result.rows[0]?.payload || null;
 }
 
-module.exports = { createDatabase, ensureSchema, saveMission, findMission };
+async function getDatabaseDiagnostics(database, limit = 10) {
+  const safeLimit = Math.max(1, Math.min(Number(limit) || 10, 25));
+  const summary = await database.query(`
+    SELECT
+      COUNT(*)::integer AS total_rows,
+      COUNT(DISTINCT id)::integer AS distinct_ids,
+      (COUNT(*) - COUNT(DISTINCT id))::integer AS duplicate_rows,
+      MAX(created_at) AS latest_created_at
+    FROM argo_missions
+  `);
+  const recent = await database.query(
+    `SELECT id::text AS id, created_at
+     FROM argo_missions
+     ORDER BY created_at DESC
+     LIMIT $1`,
+    [safeLimit]
+  );
+  return {
+    ...summary.rows[0],
+    recent_missions: recent.rows
+  };
+}
+
+module.exports = { createDatabase, ensureSchema, saveMission, findMission, getDatabaseDiagnostics };
