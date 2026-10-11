@@ -106,3 +106,35 @@ test("salva, legge e non duplica una missione", async () => {
   assert.equal(read.status, 200);
   assert.equal(read.body.produttori.length, 15);
 });
+
+test("registra richieste iOS senza token, payload o UUID in chiaro", async () => {
+  const lines = [];
+  const logger = {
+    log(value) {
+      lines.push(typeof value === "string" ? value : JSON.stringify(value));
+    },
+    error(value) {
+      lines.push(typeof value === "string" ? value : JSON.stringify(value));
+    }
+  };
+  const mission = validMission();
+  const app = createApp({ database: fakeDatabase(), apiToken: "secret", logger });
+
+  const response = await request(app)
+    .post("/argo/missions")
+    .set("authorization", "Bearer secret")
+    .send(mission);
+
+  assert.equal(response.status, 201);
+  const combined = lines.join("\n");
+  assert.doesNotMatch(combined, /secret/);
+  assert.doesNotMatch(combined, /Produttore prova/);
+  assert.doesNotMatch(combined, new RegExp(mission.id));
+
+  const requestLog = lines.map((line) => JSON.parse(line)).find((entry) => entry.event === "http_request");
+  assert.equal(requestLog.channel, "ios");
+  assert.equal(requestLog.method, "POST");
+  assert.equal(requestLog.path, "/argo/missions");
+  assert.equal(requestLog.status_code, 201);
+  assert.match(requestLog.mission_ref, /^[a-f0-9]{12}$/);
+});
