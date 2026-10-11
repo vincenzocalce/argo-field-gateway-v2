@@ -1,56 +1,46 @@
-const express = require("express");
+const { missionReference } = require("./src/privacy");
+const { createApp } = require("./src/app");
+const { createDatabase, ensureSchema, getDatabaseDiagnostics } = require("./src/database");
 
-const app = express();
 const PORT = process.env.PORT || 3000;
-const VERIFY_TOKEN = process.env.VERIFY_TOKEN || "argo-test-token";
+const database = createDatabase(process.env.DATABASE_URL);
 
-app.use(express.json());
+async function logDatabaseDiagnostics() {
+  const diagnostics = await getDatabaseDiagnostics(database);
+  console.log(JSON.stringify({
+    timestamp: new Date().toISOString(),
+    event: "database_diagnostics",
+    total_rows: diagnostics.total_rows,
+    distinct_ids: diagnostics.distinct_ids,
+    duplicate_rows: diagnostics.duplicate_rows,
+    latest_created_at: diagnostics.latest_created_at,
+    recent_mission_refs: diagnostics.recent_missions.map((mission) => ({
+      mission_ref: missionReference(mission.id),
+      created_at: mission.created_at
+    }))
+  }));
+}
 
-app.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    service: "argo-field-gateway-v2"
-  });
-});
-
-app.get("/webhook", (req, res) => {
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
-
-  if (mode === "subscribe" && token === VERIFY_TOKEN) {
-    console.log("Webhook verificato correttamente");
-    return res.status(200).send(challenge);
+async function start() {
+  if (database) {
+    await ensureSchema(database);
+    await logDatabaseDiagnostics();
+  } else {
+    console.warn("DATABASE_URL non configurata: le API missioni risponderanno 503");
   }
 
-  console.log("Verifica webhook fallita");
-  return res.sendStatus(403);
-});
-
-app.post("/webhook", (req, res) => {
-  console.log("Messaggio ricevuto da Meta/WhatsApp:");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  res.sendStatus(200);
-});
-app.get("/argo/wearable/callback", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    service: "argo-field-gateway-v2",
-    channel: "wearable",
-    endpoint: "/argo/wearable/callback"
+  const app = createApp({
+    database,
+    apiToken: process.env.ARGO_API_TOKEN,
+    verifyToken: process.env.VERIFY_TOKEN
   });
-});
 
-app.post("/argo/wearable/callback", (req, res) => {
-  console.log("Wearable callback ricevuta:");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  res.status(200).json({
-    status: "received",
-    channel: "wearable"
+  app.listen(PORT, () => {
+    console.log(`ARGO Field Gateway v2 attivo sulla porta ${PORT}`);
   });
-});
-app.listen(PORT, () => {
-  console.log("ARGO Field Gateway v2 attivo sulla porta " + PORT);
+}
+
+start().catch((error) => {
+  console.error("Avvio ARGO non riuscito:", error.message);
+  process.exit(1);
 });
