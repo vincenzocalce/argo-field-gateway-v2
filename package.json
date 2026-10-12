@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test"
+    "test": "node --test test/*.test.js",
+    "test:vin9": "node --test test/vin9-adapter.test.js test/vin9-cli.test.js"
   },
   "dependencies": {
     "express": "^4.18.2",
