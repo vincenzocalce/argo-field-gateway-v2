@@ -14,6 +14,16 @@ Gateway ARGO per Meta/WhatsApp, wearable e missioni dell'app iOS.
 Le API richiedono `Authorization: Bearer <ARGO_API_TOKEN>` oppure
 `X-ARGO-API-Key: <ARGO_API_TOKEN>`.
 
+## Telemetria Zenit per l'app iOS
+
+- `GET /argo/telemetry/vehicles`: elenco mezzi normalizzato.
+- `GET /argo/telemetry/vehicles/:vehicleId/daily?from=<RFC3339>&to=<RFC3339>`:
+  missioni, chilometri, soste, minuti di sosta e ultima posizione.
+
+La chiave Zenit resta esclusivamente sul gateway. L'app usa l'autenticazione
+A.R.G.O. e non chiama direttamente il fornitore. Contratto, configurazione e
+file Swift pronti per Xcode sono descritti in [ZENIT-TELEMETRY.md](ZENIT-TELEMETRY.md).
+
 ## Variabili Render
 
 - `DATABASE_URL`: URL interno del PostgreSQL Render nella stessa regione.
@@ -22,13 +32,17 @@ Le API richiedono `Authorization: Bearer <ARGO_API_TOKEN>` oppure
   vuoto o di soli spazi impedisce l'avvio prima di creare il Pool PostgreSQL,
   eseguire SQL o aprire una porta. Nessun token predefinito; il confronto Meta
   conserva esattamente il valore configurato, inclusi eventuali spazi.
+- `ZENIT_API_KEY`: chiave Zenit read-only, configurata solo su Render.
+- `ZENIT_API_BASE_URL`: opzionale; normalmente si usa il valore predefinito
+  `https://api.zenittelematics.com`.
 
 Se `DATABASE_URL` non è configurata, il gateway continua a ricevere gli altri
 eventi ma le API missioni rispondono `503`; questo evita di interrompere il
 servizio esistente durante la migrazione.
 
-`ARGO_API_TOKEN` assente/vuoto/di soli spazi rende le API missioni non configurate
+`ARGO_API_TOKEN` assente/vuoto/di soli spazi rende le API missioni e telemetria non configurate
 (`503`); credenziale mancante o errata su API configurata restituisce `401`.
+`ZENIT_API_KEY` assente rende le sole API telemetria non configurate (`503`).
 Le due credenziali svolgono ruoli distinti. `.env.example` non contiene segreti;
 `npm start` non carica automaticamente `.env`. Per l'avvio locale si può usare
 `node --env-file=.env server.js` dopo avere configurato i valori effettivi.
