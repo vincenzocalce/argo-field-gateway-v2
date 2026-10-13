@@ -1,7 +1,9 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const request = require("supertest");
-const { createApp } = require("../src/app");
+const { createApp: createGateway } = require("../src/app");
+// Explicit synthetic configuration; the production factory has no fallback.
+const createApp = options => createGateway({ verifyToken: "synthetic-ios-test-token", ...options });
 
 function uuid(index) {
   return `00000000-0000-4000-8000-${String(index).padStart(12, "0")}`;

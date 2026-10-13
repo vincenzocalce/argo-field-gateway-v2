@@ -1,6 +1,10 @@
 const express = require("express");
+const fs = require("node:fs");
+const path = require("node:path");
+const { observability5v } = require("../observability-5v");
+const { validateVerifyToken } = require("./config");
 const { missionReference } = require("./privacy");
-const { validateMission } = require("./validation");
+const { validateMission, isValidMissionId } = require("./validation");
 const { saveMission, findMission } = require("./database");
 
 function missionReferenceFromRequest(req) {
@@ -9,18 +13,27 @@ function missionReferenceFromRequest(req) {
 }
 
 function requestChannel(path) {
+  path = path.toLowerCase();
   if (path.startsWith("/argo/missions")) return "ios";
   if (path.startsWith("/argo/wearable")) return "wearable";
   if (path === "/webhook") return "meta";
   return "service";
 }
 
-function createApp({ database = null, apiToken, verifyToken, logger = console } = {}) {
+function createApp({ database = null, apiToken,
+  verifyToken = process.env.VERIFY_TOKEN, logger = console, writeLog } = {}) {
+  const webhookToken = validateVerifyToken(verifyToken);
+  const appleAppSiteAssociation = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../.well-known/apple-app-site-association"), "utf8")
+  );
   const app = express();
-  const webhookToken = verifyToken || "argo-test-token";
+  const safeLog = (method, ...values) => {
+    try { logger[method]?.(...values); } catch { /* telemetry must not change HTTP */ }
+  };
 
   app.disable("x-powered-by");
-  app.use(express.json({ limit: "1mb" }));
+  // Observe the original wire entity before either JSON parser (including gzip).
+  app.use(observability5v({ writeLog: writeLog || (line => safeLog("log", line)) }));
   app.use((req, res, next) => {
     const startedAt = process.hrtime.bigint();
     res.on("finish", () => {
@@ -30,15 +43,23 @@ function createApp({ database = null, apiToken, verifyToken, logger = console } 
         event: "http_request",
         channel: requestChannel(req.path),
         method: req.method,
-        path: req.route?.path || req.path,
+        // No raw URL/UUID/query in unmatched request logs.
+        path: typeof req.route?.path === "string" ? req.route.path : "<unmatched>",
         status_code: res.statusCode,
         duration_ms: Number(durationMs.toFixed(1))
       };
       const missionRef = missionReferenceFromRequest(req);
       if (missionRef) event.mission_ref = missionRef;
-      logger.log(JSON.stringify(event));
+      safeLog("log", JSON.stringify(event));
     });
     next();
+  });
+  // Preserve PR #7's 100 KB limit on Meta/wearable; iOS missions need 1 MB.
+  app.use("/argo/missions", express.json({ limit: "1mb" }));
+  app.use(express.json());
+
+  app.get(/^\/\.well-known\/apple-app-site-association$/, (_req, res) => {
+    res.status(200).type("application/json").json(appleAppSiteAssociation);
   });
 
   app.get("/", (_req, res) => {
@@ -50,15 +71,13 @@ function createApp({ database = null, apiToken, verifyToken, logger = console } 
     const token = req.query["hub.verify_token"];
     const challenge = req.query["hub.challenge"];
     if (mode === "subscribe" && token === webhookToken) {
-      logger.log("Webhook Meta verificato");
+      safeLog("log", "Webhook Meta verificato");
       return res.status(200).send(challenge);
     }
     return res.sendStatus(403);
   });
 
-  app.post("/webhook", (req, res) => {
-    const entries = Array.isArray(req.body?.entry) ? req.body.entry.length : 0;
-    logger.log("Evento Meta ricevuto", { entries });
+  app.post("/webhook", (_req, res) => {
     res.sendStatus(200);
   });
 
@@ -66,16 +85,15 @@ function createApp({ database = null, apiToken, verifyToken, logger = console } 
     res.status(200).json({ status: "ok", service: "argo-field-gateway-v2", channel: "wearable", endpoint: "/argo/wearable/callback" });
   });
 
-  app.post("/argo/wearable/callback", (req, res) => {
-    logger.log("Evento wearable ricevuto", { eventType: typeof req.body?.type === "string" ? req.body.type : "unknown" });
+  app.post("/argo/wearable/callback", (_req, res) => {
     res.status(200).json({ status: "received", channel: "wearable" });
   });
 
   function requireApiToken(req, res, next) {
-    if (!apiToken) {
+    if (typeof apiToken !== "string" || apiToken.trim().length === 0) {
       return res.status(503).json({ error: "service_not_configured", message: "ARGO_API_TOKEN non configurato sul server" });
     }
-    const bearer = req.get("authorization")?.replace(/^Bearer\s+/i, "");
+    const bearer = /^Bearer\s+(.+)$/i.exec(req.get("authorization") || "")?.[1];
     const supplied = req.get("x-argo-api-key") || bearer;
     if (supplied !== apiToken) return res.status(401).json({ error: "unauthorized" });
     next();
@@ -96,6 +114,7 @@ function createApp({ database = null, apiToken, verifyToken, logger = console } 
   app.get("/argo/missions/:id", requireApiToken, async (req, res, next) => {
     try {
       if (!database) return res.status(503).json({ error: "database_not_configured" });
+      if (!isValidMissionId(req.params.id)) return res.status(400).json({ error: "invalid_mission_id" });
       const mission = await findMission(database, req.params.id);
       if (!mission) return res.status(404).json({ error: "not_found" });
       return res.json(mission);
@@ -104,9 +123,23 @@ function createApp({ database = null, apiToken, verifyToken, logger = console } 
     }
   });
 
-  app.use((error, _req, res, _next) => {
-    logger.error("Errore richiesta ARGO", { name: error.name, message: error.message });
-    res.status(500).json({ error: "internal_error" });
+  app.use((error, _req, res, next) => {
+    if (res.headersSent) return next(error);
+    // Parser failures keep their HTTP contract. DB details/payload never enter logs.
+    const parserErrors = {
+      "entity.parse.failed": [400, "invalid_json"],
+      "entity.too.large": [413, "payload_too_large"],
+      "encoding.unsupported": [415, "unsupported_encoding"],
+      "charset.unsupported": [415, "unsupported_charset"],
+      "request.aborted": [400, "request_aborted"],
+      "request.size.invalid": [400, "invalid_body_size"]
+    };
+    // Decompression failures carry a 4xx status without a body-parser type.
+    const clientStatus = Number.isInteger(error.status) && error.status >= 400 && error.status < 500;
+    const [status, code] = parserErrors[error.type] || (clientStatus
+      ? [error.status, "invalid_request"] : [500, "internal_error"]);
+    safeLog("error", JSON.stringify({ event: "request_error", status_code: status, error: code }));
+    res.status(status).json({ error: code });
   });
 
   return app;

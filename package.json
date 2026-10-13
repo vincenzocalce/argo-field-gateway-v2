@@ -5,7 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test"
+    "test": "node --test test/*.test.js test-5v.cjs",
+    "test:token": "node --test test/verify-token.test.js test/startup.test.js",
+    "test:5v": "node --test test-5v.cjs",
+    "test:aasa": "node --test test/aasa.test.js",
+    "test:ios": "node --test test/app.test.js test/database.test.js test/privacy.test.js test/gateway-integration.test.js",
+    "test:postgres": "node --test test/postgres/*.test.js"
   },
   "dependencies": {
     "express": "^4.18.2",
