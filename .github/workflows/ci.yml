@@ -1,0 +1,51 @@
+name: Gateway regression
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      ARGO_TEST_DATABASE_URL: postgres://argo_test:synthetic_ci_password@localhost:5432/argo_gateway_test?sslmode=disable
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: argo_test
+          POSTGRES_PASSWORD: synthetic_ci_password
+          POSTGRES_DB: argo_gateway_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U argo_test -d argo_gateway_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      # Both suites run against this one checkout/event ref, never a remote DB.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Record commit and runtime
+        run: |
+          git rev-parse HEAD
+          node --version
+          npm --version
+          psql --version
+          psql "$ARGO_TEST_DATABASE_URL" -c "SELECT version()"
+          npm ls --all
+      - run: npm test
+      - run: npm run test:postgres
