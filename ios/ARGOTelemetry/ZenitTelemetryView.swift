@@ -10,15 +10,36 @@ final class ZenitTelemetryViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
 
+    @Published var authenticationRequired = false
+    @Published var retryAfter: Date?
+    private let recoverAuthentication: (() async -> Bool)?
+
     private let client: ARGOTelemetryClient
 
-    init(client: ARGOTelemetryClient) { self.client = client }
+    init(client: ARGOTelemetryClient, recoverAuthentication: (() async -> Bool)? = nil) {
+        self.client = client
+        self.recoverAuthentication = recoverAuthentication
+    }
+
+    func recoverAccess() async {
+        guard let recoverAuthentication else {
+            errorMessage = "Apri le impostazioni di accesso A.R.G.O. Dopo aver aggiornato la credenziale nel Portachiavi, premi Riprova. Se non hai la credenziale corretta, contatta il referente del gateway."
+            return
+        }
+        if await recoverAuthentication() { await loadVehicles() }
+    }
+
+    func retry() async {
+        if vehicles.isEmpty { await loadVehicles() } else { await loadDaily() }
+    }
 
     func loadVehicles() async {
         await perform {
             vehicles = try await client.vehicles()
             selectedVehicleId = selectedVehicleId ?? vehicles.first?.id
-            await loadDaily()
+            if let selectedVehicleId {
+                telemetry = try await client.daily(vehicleId: selectedVehicleId, date: selectedDate)
+            }
         }
     }
 
@@ -28,9 +49,23 @@ final class ZenitTelemetryViewModel: ObservableObject {
     }
 
     private func perform(_ operation: () async throws -> Void) async {
+        guard !isLoading else { return }
+        if let retryAfter, retryAfter > Date() { return }
         isLoading = true
         errorMessage = nil
-        do { try await operation() } catch { errorMessage = error.localizedDescription }
+        do {
+            try await operation()
+            authenticationRequired = false
+            retryAfter = nil
+        } catch is CancellationError {
+            // Navigating away is not an error for the user.
+        } catch let error as ARGOTelemetryError {
+            errorMessage = error.errorDescription
+            authenticationRequired = error == .authenticationRequired
+            if case let .rateLimited(deadline) = error { retryAfter = deadline }
+        } catch {
+            errorMessage = "Non è stato possibile caricare la telemetria. Verifica la connessione e riprova."
+        }
         isLoading = false
     }
 }
@@ -86,7 +121,18 @@ struct ZenitTelemetryView: View {
                 }
 
                 if let errorMessage = model.errorMessage {
-                    Section { Text(errorMessage).foregroundStyle(.red) }
+                    Section("Stato aggiornamento") {
+                        Text(errorMessage).foregroundStyle(.red)
+                        if model.telemetry != nil { Text("Sono visualizzati i dati precedenti, non aggiornati.").font(.caption) }
+                        if model.authenticationRequired {
+                            Button("Ripristina accesso A.R.G.O.") { Task { await model.recoverAccess() } }
+                        }
+                        if let deadline = model.retryAfter {
+                            Text("Puoi riprovare dopo le \(deadline.formatted(date: .omitted, time: .standard)).")
+                        }
+                        Button("Riprova") { Task { await model.retry() } }
+                            .disabled(model.isLoading)
+                    }
                 }
             }
             .navigationTitle("Telemetria Zenit")
