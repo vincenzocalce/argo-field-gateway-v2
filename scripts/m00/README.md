@@ -9,7 +9,8 @@ versionabile il preflight, non esegue né autorizza migrazioni e non chiude VIN-
 - [Modello v1.1, proposta progettuale](https://app.notion.com/p/3ef686efdb8e819cb64fda95976b093e).
 - [VIN-8](https://linear.app/vincenzocalce/issue/VIN-8/ispezionare-postgresql-test-ed-eseguire-la-migrazione).
 
-`inventory.sql` riprende il blocco cataloghi originale senza modifiche SQL.
+`inventory.sql` deriva dal blocco cataloghi originale; la patch del 15/10/2026
+estende l'inventario delle membership per PostgreSQL 16+ mantenendo PG12–15.
 Il runner è derivato dal blocco Bash: aggiunge diagnostica, percorsi indipendenti
 dalla directory corrente, autorizzazione preventiva, configurazione esplicita,
 permessi 0600, copia degli script e finalizzazione con hash anche sugli errori.
@@ -95,8 +96,7 @@ Hash di un file parziale prova soltanto quei byte. Interruzioni non gestibili
 Il dump e il catalogo usano snapshot diversi: congelare DDL durante la finestra.
 Le stime non sono conteggi esatti. I conteggi esatti sono una successiva attività
 autorizzata e non sono lanciati qui. Il dump non è un backup dati né una prova restore.
-Per PostgreSQL >=16 riesaminare anche inherit_option e set_option delle membership:
-il catalogo originale non le include. Non dichiarare copertura completa senza tale integrazione.
+Le membership includono ora `inherit_option` e `set_option` (vedere sotto).
 Il registro migrazioni viene letto solo per oggetti fisici r/p, non viste;
 RLS/permessi possono limitare la visibilità, da esplicitare nel riesame.
 
@@ -109,3 +109,54 @@ confronto con SQL originali P0/registro migrazioni, matrice fisico→modello v1.
 limiti risolti e decisione tecnica datata. `runner_exit_code=0` non chiude il gate.
 Acquisition ID (nome dossier) non è un `parse_run_id`.
 Migrazione v1.1, restore, P0, M1 e PROD restano fuori dal perimetro.
+
+## Membership: compatibilità e lettura del dossier
+
+`memberships.csv` mantiene le quattro colonne precedenti e aggiunge, in ordine,
+`inherit_option` e `set_option`. Il catalogo viene convertito come riga intera con
+`to_jsonb(m)`: l'estrazione delle due chiavi non riferisce colonne inesistenti.
+Non si usa un `CASE` che contenga riferimenti diretti a colonne assenti.
+
+| Server acquisito in `identity.csv` | Valori delle due nuove colonne |
+| --- | --- |
+| PostgreSQL 12–15 | SQL `NULL`: chiavi non disponibili nel catalogo |
+| PostgreSQL 16+ | Booleani reali del catalogo: `t` oppure `f` |
+
+Nel CSV psql il `NULL` è un campo vuoto non quotato; **non significa `false`**.
+Non ricostruire le opzioni per PG12–15 dai valori predefiniti delle versioni nuove:
+le regole storiche di ereditarietà e `SET ROLE` vanno riesaminate separatamente.
+Usare sempre `identity.csv` per conoscere la versione acquisita, mai la versione
+dei client, della CI o di un altro ambiente. Anche un risultato senza membership
+conserva l'intestazione delle sei colonne. Ordinamento per ruolo, membro, grantor.
+
+Il dossier conserva il CSV originale, `identity.csv`, la copia dello script
+effettivamente eseguito e i relativi SHA-256 in `checksums.json`. I test controllano
+sia i valori sia la presenza e l'integrità dei file nel manifest. L'acquisizione
+delle due opzioni completa questa lacuna del catalogo, non costituisce un'analisi
+dei privilegi effettivi e non chiude il gate M00.
+
+Riferimenti PostgreSQL ufficiali:
+- [Catalogo PG15](https://www.postgresql.org/docs/15/catalog-pg-auth-members.html).
+- [Catalogo PG16](https://www.postgresql.org/docs/16/catalog-pg-auth-members.html).
+- [Conversione JSON e chiavi assenti](https://www.postgresql.org/docs/16/functions-json.html).
+
+## Test PostgreSQL su risorse CI effimere
+
+Il workflow `.github/workflows/m00-memberships.yml` esegue la matrice PG12,
+PG15, PG16 e PG17 su servizi nuovi, isolati e distrutti a fine job. Installa client
+PG17 e validatori con versioni fissate; non legge configurazioni o segreti DEV/TEST.
+Il test `test_postgres_integration.py` richiede opt-in `--isolated-ci`, marker CI,
+porta loopback assegnata da Actions, identità sintetica e major attesa. Non parte
+con la scoperta unittest e non accetta host o credenziali operative.
+
+Il setup crea soltanto fixture nel servizio effimero: quattro combinazioni delle
+opzioni, ruoli e tabella sintetici. Esegue quindi il runner reale in sola lettura,
+conferma header/valori nel dossier, versione acquisita, sorgenti copiati, exit code
+e manifest con byte/SHA-256. Per PG12–15 i due nuovi campi devono restare NULL;
+per PG16+ tutte le combinazioni `t/t`, `t/f`, `f/t`, `f/f` devono essere preservate.
+Verifica anche l'intestazione di un risultato vuoto della SELECT effettiva.
+
+Il job conserva per sette giorni gli artefatti **sintetici CI** per ispezione,
+anche sui fallimenti quando disponibili. Non sono evidenze operative DEV/TEST;
+versioni effettive e risultati vanno letti dal run CI del commit in esame.
+Esiti verificati e risultati storici sono distinti in `VALIDATION.md`.

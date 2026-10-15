@@ -28,7 +28,14 @@ SELECT n.nspname,p.proname,p.oid::regprocedure AS signature,p.prokind,p.prosecde
 \o roles.csv
 SELECT oid,rolname,rolsuper,rolinherit,rolcreaterole,rolcreatedb,rolcanlogin,rolreplication,rolconnlimit,rolvaliduntil,rolbypassrls FROM pg_roles ORDER BY rolname;
 \o memberships.csv
-SELECT roleid::regrole AS granted_role,member::regrole AS member,grantor::regrole AS grantor,admin_option FROM pg_auth_members ORDER BY 1,2;
+-- PG16+ adds per-membership INHERIT/SET options. Whole-row JSON extraction
+-- avoids resolving absent columns on PG12-15; missing keys remain SQL NULL,
+-- not false. identity.csv records the server version used for interpretation.
+SELECT m.roleid::regrole AS granted_role,m.member::regrole AS member,
+       m.grantor::regrole AS grantor,m.admin_option,
+       (to_jsonb(m)->>'inherit_option')::boolean AS inherit_option,
+       (to_jsonb(m)->>'set_option')::boolean AS set_option
+FROM pg_auth_members m ORDER BY 1,2,3;
 \o database_acl.csv
 SELECT datname,pg_get_userbyid(datdba) AS owner,datacl FROM pg_database WHERE datname=current_database();
 \o default_acl.csv

@@ -4,3 +4,4 @@ pg_service.conf
 .pgpass
 pgpass
 M00_*/
+__pycache__/
