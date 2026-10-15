@@ -1,0 +1,76 @@
+name: M00 membership compatibility (isolated CI)
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/m00/**'
+      - '.github/workflows/m00-memberships.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  memberships:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        postgres: ['12', '15', '16', '17']
+    # Every matrix entry receives a NEW service destroyed with the job. These
+    # fixed credentials are synthetic fixtures, never operational credentials.
+    services:
+      postgres:
+        image: postgres:${{ matrix.postgres }}
+        env:
+          POSTGRES_USER: m00_ci
+          POSTGRES_DB: m00_ci
+          POSTGRES_PASSWORD: m00_ci_disposable_only
+        ports:
+          - 5432/tcp
+        options: >-
+          --health-cmd "pg_isready -U m00_ci -d m00_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL 17 clients (compatible with all server entries)
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes curl ca-certificates
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl --fail --silent --show-error -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt noble-pgdg main' | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-client-17
+          echo '/usr/lib/postgresql/17/bin' >> "$GITHUB_PATH"
+      - name: Install pinned offline validators
+        run: |
+          python3 -m venv '${{ runner.temp }}/m00-validation-venv'
+          '${{ runner.temp }}/m00-validation-venv/bin/pip' install pglast==8.5 shellcheck-py==0.11.0.1
+          echo '${{ runner.temp }}/m00-validation-venv/bin' >> "$GITHUB_PATH"
+      - name: Offline runner and SQL checks (no database connection)
+        run: |
+          shellcheck scripts/m00/run_m00.sh
+          python3 scripts/m00/validate_sql.py
+          python3 scripts/m00/test_runner.py
+      - name: Full inventory on this job's disposable service only
+        env:
+          M00_CI_ISOLATED_RESOURCE: m00-memberships-disposable
+        run: >-
+          python3 scripts/m00/test_postgres_integration.py
+          --isolated-ci
+          --port '${{ job.services.postgres.ports[5432] }}'
+          --expected-major '${{ matrix.postgres }}'
+          --evidence-root '${{ runner.temp }}/m00-ci-${{ matrix.postgres }}'
+      - name: Preserve synthetic CI evidence (does not close M00)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m00-synthetic-postgresql-${{ matrix.postgres }}
+          path: ${{ runner.temp }}/m00-ci-${{ matrix.postgres }}/
+          if-no-files-found: ignore
+          retention-days: 7

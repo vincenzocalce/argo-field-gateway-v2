@@ -1,0 +1,17 @@
+# Copy OUTSIDE the repository; chmod 600. No passwords here.
+# Replace every REPLACE_* value using verified provider resource metadata.
+[argo_dev]
+host=REPLACE_DEV_DIRECT_HOST
+port=5432
+dbname=REPLACE_DEV_DATABASE
+user=REPLACE_AUTHORIZED_READ_ROLE
+sslmode=verify-full
+sslrootcert=/absolute/path/to/provider-ca.pem
+
+[argo_test]
+host=REPLACE_TEST_DIRECT_HOST
+port=5432
+dbname=REPLACE_TEST_DATABASE
+user=REPLACE_AUTHORIZED_READ_ROLE
+sslmode=verify-full
+sslrootcert=/absolute/path/to/provider-ca.pem
