@@ -90,6 +90,53 @@ final class TelemetryTests: XCTestCase {
         let reads = await counter.reads
         XCTAssertEqual(reads, 2)
     }
+    @MainActor
+    func testGuidedRecovery() async {
+        var authorized = false
+        StubProtocol.handler = { _ in
+            if !authorized { return (401, [:], Data()) }
+            return (200, [:], Data("{\"provider\":\"zenit\",\"capturedAt\":\"now\",\"vehicles\":[]}".utf8))
+        }
+        let model = ZenitTelemetryViewModel(client: client(), recoverAuthentication: {
+            authorized = true
+            return true
+        })
+        await model.loadVehicles()
+        XCTAssertTrue(model.authenticationRequired)
+        XCTAssertNotNil(model.errorMessage)
+        await model.recoverAccess()
+        XCTAssertFalse(model.authenticationRequired)
+        XCTAssertNil(model.errorMessage)
+        XCTAssertFalse(model.isLoading)
+    }
+
+    @MainActor
+    func testRecoveryWithoutAppCoordinatorGivesInstructions() async {
+        StubProtocol.handler = { _ in (401, [:], Data()) }
+        let model = ZenitTelemetryViewModel(client: client())
+        await model.loadVehicles()
+        await model.recoverAccess()
+        XCTAssertTrue(model.authenticationRequired)
+        XCTAssertTrue(model.errorMessage?.contains("Portachiavi") == true)
+    }
+
+    @MainActor
+    func testFailedRefreshPreservesPreviousTelemetry() async throws {
+        let previous = try JSONDecoder().decode(ZenitDailyTelemetry.self, from: Data("""
+        {"provider":"zenit","vehicleId":"veh_ABC123","requestedWindow":{"from":"a","to":"b"},
+         "capturedAt":"previous","summary":{"missionsCount":1,"distanceKm":10,"stopsCount":0,"stopMinutes":0},
+         "missions":[],"stops":[],"latestPosition":null}
+        """.utf8))
+        StubProtocol.handler = { _ in throw URLError(.timedOut) }
+        let model = ZenitTelemetryViewModel(client: client())
+        model.selectedVehicleId = "veh_ABC123"
+        model.telemetry = previous
+        await model.loadDaily()
+        XCTAssertEqual(model.telemetry?.capturedAt, "previous")
+        XCTAssertEqual(model.errorMessage, ARGOTelemetryError.timeout.errorDescription)
+        XCTAssertFalse(model.isLoading)
+    }
+
 }
 
 private actor TokenCounter {
