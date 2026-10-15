@@ -29,7 +29,9 @@ appAccessCoordinator √® un punto di integrazione dell'app, non un componente gi√
 - npm ci --ignore-scripts --no-audit --no-fund: eseguito con successo.
 - npm test: eseguito, 57/57 PASS, zero failure e skip; suite preesistenti conservate.
 - git diff --check: eseguito con successo.
-- swift test --package-path ios: suite aggiunta con URLProtocol, nessun servizio reale o credenziale reale. Esecuzione demandata al workflow macOS Swift telemetry simulated responses: il runtime locale non dispone di Swift. Esito da verificare nel run CI.
+- swift test --package-path ios: ESEGUITO in CI macOS 14 / Swift 5.10: 15/15 PASS, zero failure. Risposte simulate via URLProtocol, nessun servizio reale o credenziale reale. Run: https://github.com/vincenzocalce/argo-field-gateway-v2/actions/runs/38797881174
+- Gateway regression CI: 57/57 Node.js e 9/9 PostgreSQL PASS, zero skip. PostgreSQL 16.15 effimero, non PostgreSQL TEST operativo. Run: https://github.com/vincenzocalce/argo-field-gateway-v2/actions/runs/38797881166
+- Le CI precedenti verificano il codice del commit 5fe88d4a80b28aa945f8b00873cd777dbeb956fc combinato con la base 314760a nel merge ref temporaneo bdaa0b8. Questa successiva registrazione modifica soltanto la documentazione.
 - Compilazione effettivo progetto Xcode: NON ESEGUITA.
 - Collaudo nuova revisione su iPhone: NON ESEGUITO.
 - Nessun deploy Render o merge richiesto/eseguito.
