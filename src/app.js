@@ -6,6 +6,7 @@ const { validateVerifyToken } = require("./config");
 const { missionReference } = require("./privacy");
 const { validateMission, isValidMissionId } = require("./validation");
 const { saveMission, findMission } = require("./database");
+const { ZenitUpstreamError, isValidVehicleId, validateWindow } = require("./zenit-client");
 
 function missionReferenceFromRequest(req) {
   const rawId = req.body?.id || req.params?.id || req.path.match(/^\/argo\/missions\/([^/]+)$/)?.[1];
@@ -15,12 +16,13 @@ function missionReferenceFromRequest(req) {
 function requestChannel(path) {
   path = path.toLowerCase();
   if (path.startsWith("/argo/missions")) return "ios";
+  if (path.startsWith("/argo/telemetry")) return "zenit";
   if (path.startsWith("/argo/wearable")) return "wearable";
   if (path === "/webhook") return "meta";
   return "service";
 }
 
-function createApp({ database = null, apiToken,
+function createApp({ database = null, apiToken, zenitClient = null,
   verifyToken = process.env.VERIFY_TOKEN, logger = console, writeLog } = {}) {
   const webhookToken = validateVerifyToken(verifyToken);
   const appleAppSiteAssociation = JSON.parse(
@@ -123,8 +125,39 @@ function createApp({ database = null, apiToken,
     }
   });
 
+  app.get("/argo/telemetry/vehicles", requireApiToken, async (_req, res, next) => {
+    try {
+      if (!zenitClient) return res.status(503).json({ error: "zenit_not_configured" });
+      const vehicles = await zenitClient.listVehicles();
+      return res.json({ provider: "zenit", capturedAt: new Date().toISOString(), vehicles });
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  app.get("/argo/telemetry/vehicles/:vehicleId/daily", requireApiToken, async (req, res, next) => {
+    try {
+      if (!zenitClient) return res.status(503).json({ error: "zenit_not_configured" });
+      if (!isValidVehicleId(req.params.vehicleId)) return res.status(400).json({ error: "invalid_vehicle_id" });
+      const windowError = validateWindow(req.query.from, req.query.to);
+      if (windowError) return res.status(400).json({ error: "invalid_window", message: windowError });
+      const telemetry = await zenitClient.getDailyTelemetry(req.params.vehicleId, {
+        from: req.query.from,
+        to: req.query.to
+      });
+      return res.json(telemetry);
+    } catch (error) {
+      next(error);
+    }
+  });
+
   app.use((error, _req, res, next) => {
     if (res.headersSent) return next(error);
+    if (error instanceof ZenitUpstreamError) {
+      if (error.retryAfter) res.set("Retry-After", error.retryAfter);
+      safeLog("error", JSON.stringify({ event: "zenit_error", status_code: error.status, error: error.code }));
+      return res.status(error.status).json({ error: error.code });
+    }
     // Parser failures keep their HTTP contract. DB details/payload never enter logs.
     const parserErrors = {
       "entity.parse.failed": [400, "invalid_json"],

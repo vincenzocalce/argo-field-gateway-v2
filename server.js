@@ -2,15 +2,18 @@ const { missionReference } = require("./src/privacy");
 const { validateVerifyToken } = require("./src/config");
 const { createApp } = require("./src/app");
 const { createDatabase, ensureSchema, getDatabaseDiagnostics } = require("./src/database");
+const { createZenitClient } = require("./src/zenit-client");
 
 async function start({ env = process.env, logger = console,
   databaseFactory = createDatabase, schemaInitializer = ensureSchema,
-  diagnosticsReader = getDatabaseDiagnostics } = {}) {
+  diagnosticsReader = getDatabaseDiagnostics, zenitFactory = createZenitClient } = {}) {
   // Fail before constructing a Pool, performing SQL or opening an HTTP listener.
   const verifyToken = validateVerifyToken(env.VERIFY_TOKEN);
   const database = databaseFactory(env.DATABASE_URL);
+  let zenitClient;
   let server;
   try {
+    zenitClient = zenitFactory({ apiKey: env.ZENIT_API_KEY, baseUrl: env.ZENIT_API_BASE_URL });
     if (database) {
       await schemaInitializer(database);
       const diagnostics = await diagnosticsReader(database);
@@ -29,8 +32,9 @@ async function start({ env = process.env, logger = console,
     } else {
       logger.warn("DATABASE_URL non configurata: le API missioni risponderanno 503");
     }
+    if (!zenitClient) logger.warn("ZENIT_API_KEY non configurata: le API telemetria risponderanno 503");
 
-    const app = createApp({ database, apiToken: env.ARGO_API_TOKEN, verifyToken, logger });
+    const app = createApp({ database, apiToken: env.ARGO_API_TOKEN, verifyToken, zenitClient, logger });
     const port = env.PORT || 3000;
     await new Promise((resolve, reject) => {
       server = app.listen(port, resolve);
