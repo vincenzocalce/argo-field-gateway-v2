@@ -1,0 +1,38 @@
+
+name: Muse Spark CI
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/muse/**'
+      - '.github/workflows/muse-spark-ci.yml'
+  push:
+    branches:
+      - experiment/muse-spark-argo
+    paths:
+      - 'experiments/muse/**'
+      - '.github/workflows/muse-spark-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  muse-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run offline Muse tests
+        env:
+          ARGO_MUSE_EXPERIMENT_ENABLED: 'false'
+          OPENROUTER_API_KEY: ''
+        run: node --test experiments/muse/*.test.js
