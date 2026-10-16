@@ -1,0 +1,5 @@
+ESEMPIO SINTETICO - nessun operatore reale
+Data 15/10/2026
+Area Alfa
+Operatore Demo A: secco 580 kg; umido 300 kg; targa AA000AA.
+Operatore Demo B: secco 560 kg; umido 400 kg; targa BB000BB.

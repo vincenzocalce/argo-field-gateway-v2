@@ -1,0 +1,82 @@
+{
+  "complete": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Area Alfa",
+        "operator": "Operatore Demo A",
+        "plate": "AA000AA",
+        "secco_kg": 580,
+        "umido_kg": 300
+      },
+      {
+        "area": "Area Alfa",
+        "operator": "Operatore Demo B",
+        "plate": "BB000BB",
+        "secco_kg": 560,
+        "umido_kg": 400
+      }
+    ],
+    "conflict_required": false
+  },
+  "missing": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Area Beta",
+        "operator": "Operatore Demo C",
+        "plate": null,
+        "secco_kg": 200,
+        "umido_kg": null
+      }
+    ],
+    "conflict_required": false
+  },
+  "conflict": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Area Gamma",
+        "operator": "Operatore Demo D",
+        "plate": "DD000DD",
+        "secco_kg": 1300,
+        "umido_kg": 100
+      },
+      {
+        "area": "Area Gamma",
+        "operator": "Operatore Demo D",
+        "plate": "DD000DD",
+        "secco_kg": 2800,
+        "umido_kg": 100
+      }
+    ],
+    "conflict_required": true
+  },
+  "boundaries": {
+    "date": null,
+    "rows": [
+      {
+        "area": "Settore Delta",
+        "operator": "Operatore Test Uno",
+        "plate": null,
+        "secco_kg": 0,
+        "umido_kg": null
+      },
+      {
+        "area": "Settore Delta",
+        "operator": "Operatore Test Uno",
+        "plate": null,
+        "secco_kg": 0,
+        "umido_kg": null
+      },
+      {
+        "area": "Settore Delta est",
+        "operator": "Operatore Test Due",
+        "plate": null,
+        "secco_kg": 17,
+        "umido_kg": null
+      }
+    ],
+    "conflict_required": false
+  }
+}

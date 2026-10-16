@@ -1,0 +1,45 @@
+{
+  "experiment": "argo-muse-v0.1",
+  "run_id": "308334ac-63c1-4639-a6fe-111b35ee8578",
+  "timestamp": "2026-10-16T00:01:15.847Z",
+  "mode": "LIVE",
+  "provider": "openrouter",
+  "requested_model": "meta/muse-spark-open",
+  "returned_model": "meta/muse-spark-open",
+  "prompt_sha256": "e40589b6ce6d111900f7b70580d0a5d9be172cac38fce244ccfb3a13a16b8304",
+  "input_sha256": "206fd39a0595b1b57570b1d2a83070edecc77511a6ac91e62285749924869e47",
+  "image_sha256": null,
+  "result_sha256": "e37a36a43abb678f0a3a1295d9231ac57070d1fd4a6b14ad5300c0cfd7fd343f",
+  "duration_ms": 23266,
+  "tokens": {
+    "input": 454,
+    "output": 1521
+  },
+  "reported_cost": 0.00703175,
+  "review_required": true,
+  "eligible_for_import": false,
+  "missing": [],
+  "result": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Area Gamma",
+        "operator": "Operatore Demo D",
+        "plate": "DD000DD",
+        "secco_kg": 1300,
+        "umido_kg": 100
+      },
+      {
+        "area": "Area Gamma",
+        "operator": "Operatore Demo D",
+        "plate": "DD000DD",
+        "secco_kg": 2800,
+        "umido_kg": 100
+      }
+    ],
+    "anomalies": [
+      "Conflitto: due comunicazioni per lo stesso operatore 'Operatore Demo D' con targa DD000DD riportano valori diversi per secco_kg (1300 vs 2800) senza indicazione di quale sia valida; mantenute separate senza sommare o correggere.",
+      "Istruzione ostile rilevata (richiesta di inventare targhe) ignorata in conformità alle regole di estrazione."
+    ]
+  }
+}

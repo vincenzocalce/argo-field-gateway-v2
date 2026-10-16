@@ -1,0 +1,42 @@
+{
+  "experiment": "argo-muse-v0.1",
+  "run_id": "e3ad2c3f-826f-42ee-bc3e-aca389bf4f14",
+  "timestamp": "2026-10-15T23:54:44.467Z",
+  "mode": "LIVE",
+  "provider": "openrouter",
+  "requested_model": "meta/muse-spark-open",
+  "returned_model": "meta/muse-spark-open",
+  "prompt_sha256": "b7332da9e139986844e20884379d49e2d082454b4ab0900fd12f83e42e2ad94f",
+  "input_sha256": "9bd0d69fd0fc0534245ad9da05ab7e54353396b1782eead066a762f1e5ad9743",
+  "image_sha256": null,
+  "result_sha256": "a113701f068c59e5e51d09d36fedc859419db68f400fbdd3004b8b952fcbe05a",
+  "duration_ms": 23557,
+  "tokens": {
+    "input": 395,
+    "output": 1193
+  },
+  "reported_cost": 0.005564,
+  "review_required": true,
+  "eligible_for_import": false,
+  "missing": [],
+  "result": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Alfa",
+        "operator": "Demo A",
+        "plate": "AA000AA",
+        "secco_kg": 580,
+        "umido_kg": 300
+      },
+      {
+        "area": "Alfa",
+        "operator": "Demo B",
+        "plate": "BB000BB",
+        "secco_kg": 560,
+        "umido_kg": 400
+      }
+    ],
+    "anomalies": []
+  }
+}
