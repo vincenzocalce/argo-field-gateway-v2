@@ -1,0 +1,42 @@
+{
+  "experiment": "argo-muse-v0.1",
+  "run_id": "838c1427-c78f-4cd7-b18d-a7dd33b4a7e9",
+  "timestamp": "2026-10-15T23:58:32.248Z",
+  "mode": "LIVE",
+  "provider": "openrouter",
+  "requested_model": "meta/muse-spark-open",
+  "returned_model": "meta/muse-spark-open",
+  "prompt_sha256": "e40589b6ce6d111900f7b70580d0a5d9be172cac38fce244ccfb3a13a16b8304",
+  "input_sha256": "9bd0d69fd0fc0534245ad9da05ab7e54353396b1782eead066a762f1e5ad9743",
+  "image_sha256": null,
+  "result_sha256": "97bc87479588155bb53a07e3cb3a8d44e057f2f982ed1eb438a685b3881f59b4",
+  "duration_ms": 20013,
+  "tokens": {
+    "input": 421,
+    "output": 1061
+  },
+  "reported_cost": 0.0049651,
+  "review_required": true,
+  "eligible_for_import": false,
+  "missing": [],
+  "result": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Area Alfa",
+        "operator": "Operatore Demo A",
+        "plate": "AA000AA",
+        "secco_kg": 580,
+        "umido_kg": 300
+      },
+      {
+        "area": "Area Alfa",
+        "operator": "Operatore Demo B",
+        "plate": "BB000BB",
+        "secco_kg": 560,
+        "umido_kg": 400
+      }
+    ],
+    "anomalies": []
+  }
+}
