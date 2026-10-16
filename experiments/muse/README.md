@@ -12,14 +12,28 @@ Data: 15 ottobre 2026. Modulo sperimentale richiamabile da Node, accompagnato da
 
 Le fixture sono sintetiche: non contengono persone, missioni o targhe operative. I risultati sono proposte documentali, sempre `review_required: true` ed `eligible_for_import: false`. Non rappresentano missioni iOS e non soddisfano il loro contratto API/SQL.
 
-## Stato verificato
+## Stato verificato — aggiornamento 16 ottobre 2026
 
-- 10/10 test locali superati su Node 24.19.0 con risposte simulate: attivazione, credenziali, trasporto testo/immagine, limiti, modello, errori, validazione, valutazione e protezione dei file.
-- Test modello reali E1/E2/E3: **NON ESEGUITI**, chiave OpenRouter assente nell'ambiente.
-- Accuratezza, costo reale, latenza reale, capacità visiva e resistenza all'istruzione ostile: **NON MISURATI**.
-- Nessun collegamento automatico a WhatsApp, app iOS, Notion o PostgreSQL; nessun endpoint aggiunto. Il gateway continua a usare il codice preesistente. Nessun merge/deploy o avanzamento M1 dimostrato.
+- 16/16 test locali su Node 24.19.0: risposte simulate, controlli dell'evaluator e replay offline di report storici. Nessuna nuova chiamata al modello in questo aggiornamento.
+- Le chiamate reali della sessione Mac sono documentate nella [relazione Notion](https://app.notion.com/p/3fb686efdb8e817db2eec490305c46bf). Con v2 complete/missing risultano positivi, conflict negativo; con v3 è documentato positivo il solo conflitto.
+- Recuperati `v3-conflict.json` e `v2-conflict-diagnostic.json`, entrambi sintetici. Il replay verifica hash input/risultato v3 e rifiuto dello schema v2. Non è una interrogazione reale ripetuta né una attestazione indipendente del provider.
+- Il testo esatto v3 non è contenuto nel report recuperato: è disponibile solo il suo hash. `prompts/v4-generalized.txt` è una nuova implementazione dei requisiti descritti in Notion, NON una copia byte per byte di v3. Il prompt pubblicato precedente è archiviato in `prompts/published-v1.txt`.
+- v4: prove reali complete/missing/conflict/boundaries, messaggio operativo e multimodalità **DA ESEGUIRE**. Nessuna accuratezza generalizzabile dimostrata. Beneficio di tempo non misurato.
+- Importazione automatica disabilitata; revisione umana obbligatoria. Nessun merge/deploy o avanzamento M1.
 
-I test simulati verificano il codice, non le capacità di Muse. La fixture immagine del test automatico verifica esclusivamente il formato del trasporto; non costituisce una foto decodificabile o un test visivo reale.
+I mock sono ora marcati `SIMULATED`; i vecchi report dei test del client potevano riportare LIVE anche con trasporto sostituito. Le evidenze storiche non sono state riscritte. La firma immagine nei test verifica solo il trasporto. E3 nei primi report è il nome della prova testuale conflict, non una prova visiva.
+
+### Differenze delle istruzioni
+
+| Requisito | Prompt pubblicato precedente | v3 secondo Notion | Nuovo v4 |
+|---|---|---|---|
+| Etichette complete / schema esplicito | presenti | presenti e rafforzati | conservati |
+| Ultima intestazione territoriale | non esplicita | documentata | esplicita, senza equivalenze geografiche |
+| Alternative / righe ripetute | solo conflitti | alternative documentate | nessuna scelta o deduplicazione |
+| Portate / anomalie dedotte | non esplicito | vietate senza evidenza | divieto esplicito |
+| Eccezione per organizzazione specifica | assente nel pubblicato | riferimento da generalizzare | regola generale su organizzazioni/clienti/produttori |
+
+Il confronto v3 è semantico sulla relazione, non un diff del sorgente mancante. Recuperare il testo originale con hash `ef4c46b1bc6e0a7ead675038a603faa678401cf83636b6437a8d426026727ddf` per chiudere questo punto.
 
 ## Accesso al modello
 
@@ -51,7 +65,11 @@ La CLI effettua una sola richiesta per comando, senza retry, con massimo 4096 to
 
 ## Valutazione e decisione
 
+`fixtures/boundaries.txt` aggiunge un caso nuovo rispetto alle prove storiche: cambio intestazione, ripetizioni identiche, zero esplicito e campi null. È un caso di regressione progettato durante questo aggiornamento, non un campione indipendente di validazione.
+
 `expected.json` è il riferimento stabilito prima della prova. L'evaluator confronta esattamente i campi delle righe e la data e controlla la presenza di una segnalazione per il conflitto; il significato della segnalazione va letto manualmente. Un alias testuale diverso viene contato come differenza. Controllare anche ogni valore estratto rispetto alla fonte: lo schema corretto non dimostra la veridicità del dato.
+
+Ogni nuovo report conserva anche il testo originale integrale, le righe incluse quelle vuote, e il testo/versione del prompt. Questi dati rimangono nei risultati locali esclusi da Git: non pubblicare report operativi. La conservazione della fonte non garantisce automaticamente la copertura delle righe estratte; questa richiede un riferimento revisionato. L’evaluator conta righe mancanti/modificate e inattese/modificate preservando la molteplicità, oltre al confronto esatto ordinato. Non può rilevare omissioni in un messaggio arbitrario privo di riferimento.
 
 Ogni report registra run ID sperimentale (non `parse_run_id` PostgreSQL), timestamp, modello richiesto/restituito, hash del prompt, del testo, dell'eventuale immagine e del risultato, durata e consumo/costo quando comunicati dal provider. Ripetere ogni prova con un nuovo percorso di output per osservare la variabilità; temperatura zero non garantisce identità dei risultati.
 
@@ -62,7 +80,7 @@ Previsioni dei carichi, distribuzione del lavoro e rischio DMS richiedono esperi
 ## Riprodurre i test del codice
 
 ```bash
-node --test experiments/muse/client.test.js
+node --test experiments/muse/*.test.js
 ```
 
 ## Fonti tecniche

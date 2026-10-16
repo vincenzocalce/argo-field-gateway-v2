@@ -41,7 +41,7 @@ test('missing values remain null and every output requires review', async () => 
   const r = await extract(options({ fetchImpl: mock(envelope(sample())) }));
   assert.deepEqual(r.missing, ['rows[0].plate', 'rows[0].umido_kg']);
   assert.equal(r.review_required, true); assert.equal(r.eligible_for_import, false);
-  assert.equal(r.mode, 'LIVE'); assert.equal(r.input_sha256.length, 64);
+  assert.equal(r.mode, 'SIMULATED'); assert.equal(r.input_sha256.length, 64);
   assert.equal(r.result.rows[0].plate, null);
   assert.equal(JSON.stringify(r).includes('synthetic-test-key'), false);
 });

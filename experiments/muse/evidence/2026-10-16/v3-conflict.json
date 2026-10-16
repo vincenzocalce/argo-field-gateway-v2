@@ -1,0 +1,44 @@
+{
+  "experiment": "argo-muse-v0.1",
+  "run_id": "eef4e9c6-9007-4fb2-be87-00271f83cbb1",
+  "timestamp": "2026-10-16T00:23:42.321Z",
+  "mode": "LIVE",
+  "provider": "openrouter",
+  "requested_model": "meta/muse-spark-open",
+  "returned_model": "meta/muse-spark-open",
+  "prompt_sha256": "ef4c46b1bc6e0a7ead675038a603faa678401cf83636b6437a8d426026727ddf",
+  "input_sha256": "206fd39a0595b1b57570b1d2a83070edecc77511a6ac91e62285749924869e47",
+  "image_sha256": null,
+  "result_sha256": "ec5c6e62effb61258416a8b46fc7dc4c550f4c712f636a9095468277245533a4",
+  "duration_ms": 29907,
+  "tokens": {
+    "input": 668,
+    "output": 1803
+  },
+  "reported_cost": 0.00842735,
+  "review_required": true,
+  "eligible_for_import": false,
+  "missing": [],
+  "result": {
+    "date": "2026-10-15",
+    "rows": [
+      {
+        "area": "Area Gamma",
+        "operator": "Operatore Demo D",
+        "plate": "DD000DD",
+        "secco_kg": 1300,
+        "umido_kg": 100
+      },
+      {
+        "area": "Area Gamma",
+        "operator": "Operatore Demo D",
+        "plate": "DD000DD",
+        "secco_kg": 2800,
+        "umido_kg": 100
+      }
+    ],
+    "anomalies": [
+      "Due comunicazioni contrastanti per lo stesso operatore Operatore Demo D con targa DD000DD in Area Gamma in data 2026-10-15 riportano peso secco diverso (1300 kg vs 2800 kg) a parità di umido (100 kg); la fonte dichiara incerto quale comunicazione sia valida, mantenute separate senza scelta né correzione."
+    ]
+  }
+}

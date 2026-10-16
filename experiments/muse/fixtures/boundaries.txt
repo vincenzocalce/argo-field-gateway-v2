@@ -1,0 +1,7 @@
+ESEMPIO SINTETICO; data non comunicata.
+Settore Delta
+Operatore Test Uno: secco 0 kg.
+Operatore Test Uno: secco 0 kg.
+Settore Delta est
+Operatore Test Due: secco 17 kg.
+Targhe e umido non comunicati. Le due comunicazioni identiche vanno conservate.

@@ -14,8 +14,14 @@ function evaluate(report, fixture) {
     review_required: report.review_required === true,
     import_disabled: report.eligible_for_import === false
   };
-  return { fixture, checks, passed: Object.values(checks).every(Boolean),
-    limitation: 'Controllo meccanico di 3 fixture sintetiche; significato delle anomalie da revisionare. Non misura accuratezza operativa.' };
+  const remaining = [...target.rows];
+  let unexpected = 0;
+  for (const row of report.result.rows) {
+    const i = remaining.findIndex(wanted => isDeepStrictEqual(row, wanted));
+    if (i < 0) unexpected++; else remaining.splice(i, 1);
+  }
+  return { fixture, row_differences: { missing_or_changed: remaining.length, unexpected_or_changed: unexpected }, checks, passed: Object.values(checks).every(Boolean),
+    limitation: 'Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa.' };
 }
 if (require.main === module) {
   try {
