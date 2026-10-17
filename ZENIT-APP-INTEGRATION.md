@@ -78,6 +78,8 @@ Per ogni prova registrare commit componente, commit/build app, scheme/configuraz
 - ESEGUITO: lettura API GitHub PR #16, albero completo e sorgenti Swift della base; assenza progetto Xcode verificata nell'albero.
 - ESEGUITO: revisione statica del componente, nessun logger o token reale introdotto; controllo whitespace locale.
 - NON ESEGUITO localmente: Swift, Xcode, test Swift (runtime Linux senza Swift), test Node/PostgreSQL (nessuna modifica gateway).
-- CI nuova revisione: consultare il run della PR; finché non concluso non è PASS. Le evidenze storiche 15 Swift/57 Node/9 Postgres della #16 riguardano la base e non vengono riattribuite al componente.
+- CI nuova revisione ESEGUITA: 22/22 test Swift PASS (7 nuovi + 15 esistenti), zero failure; macOS 14 / Swift 5.10. Run https://github.com/vincenzocalce/argo-field-gateway-v2/actions/runs/39013299133 . Log del job 117340169278 letti e verificati.
+- Regression CI ESEGUITA: 57/57 Node.js e 9/9 PostgreSQL PASS, zero failure e skip; PostgreSQL 16.15 effimero, non TEST operativo. Run https://github.com/vincenzocalce/argo-field-gateway-v2/actions/runs/39013299093 . Log del job 117340168973 letti e verificati.
+- Entrambi i run verificano il codice b626df0e10d4dbf8d95caec459d5fc68abbec169 nel merge ref temporaneo 0e26efc39db6f1a4af34de94964f46a7381ff0a5 con base 7b8dfbd. La successiva registrazione delle evidenze modifica soltanto questo documento. Proposta pubblicata nella PR #17, dipendente dalla #16; nessun merge eseguito. Non sono risultati storici riattribuiti.
 - NON ESEGUITO: collegamento Keychain reale, compilazione target A.R.G.O., installazione e protocollo iPhone, accesso a PostgreSQL TEST operativo.
 - Nessun merge o deploy Render eseguito. La consegna è un componente integrabile con test e istruzioni, non un'integrazione reale completata.
