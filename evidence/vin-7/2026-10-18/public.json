@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-18T17:47:49.302730+00:00",
+  "contract": {
+    "domain": "www.seagroup.info",
+    "path": "/argo/wearable/callback",
+    "applicationIdentifier": "N6JGN24QMU.it.vincenzocalce.argo.wearable",
+    "bundleIdentifier": "it.vincenzocalce.argo.wearable",
+    "teamIdentifier": "N6JGN24QMU"
+  },
+  "source": {
+    "kind": "https-get",
+    "url": "https://www.seagroup.info/.well-known/apple-app-site-association"
+  },
+  "aasaSHA256": "de3f317296bc040a58bc4b42710ce6a466d0f2acbe66dc0a89973d9db8e0f45b",
+  "transport": {
+    "url": "https://www.seagroup.info/.well-known/apple-app-site-association",
+    "capturedAt": "2026-10-18T17:46:33.761099+00:00",
+    "redirectsFollowed": false,
+    "status": 200,
+    "contentType": "application/json",
+    "location": null,
+    "tls": "system-trust-accepted",
+    "sha256": "de3f317296bc040a58bc4b42710ce6a466d0f2acbe66dc0a89973d9db8e0f45b",
+    "bytesRead": 167,
+    "truncated": false
+  },
+  "result": "INCOMPATIBLE",
+  "gate": "OPEN — REVIEW_REQUIRED",
+  "findings": [
+    {
+      "check": "domain.contract",
+      "status": "MATCH",
+      "message": "www.seagroup.info"
+    },
+    {
+      "check": "callback.url",
+      "status": "MATCH",
+      "message": "HTTPS, host e percorso esatti; query/frammento non vincolati."
+    },
+    {
+      "check": "http.status",
+      "status": "MATCH",
+      "message": "200"
+    },
+    {
+      "check": "http.mime",
+      "status": "MATCH",
+      "message": "application/json"
+    },
+    {
+      "check": "http.redirect",
+      "status": "MATCH",
+      "message": "Nessun Location."
+    },
+    {
+      "check": "http.scope",
+      "status": "MATCH",
+      "message": "GET da questo ambiente; trust TLS standard. Non verifica CDN Apple."
+    },
+    {
+      "check": "aasa.json",
+      "status": "MATCH",
+      "message": "JSON valido, chiavi uniche, dimensione entro 128 KiB."
+    },
+    {
+      "check": "aasa.details.0.identity",
+      "status": "MATCH",
+      "message": "N6JGN24QMU.it.vincenzocalce.argo.wearable"
+    },
+    {
+      "check": "aasa.details.0.paths",
+      "status": "INCOMPATIBLE",
+      "message": "paths deve contenere solo il callback esatto, senza wildcard o esclusioni."
+    },
+    {
+      "check": "aasa.applicationIdentifier",
+      "status": "MATCH",
+      "message": "N6JGN24QMU.it.vincenzocalce.argo.wearable"
+    },
+    {
+      "check": "build.signedEvidence",
+      "status": "MISSING",
+      "message": "Acquisire la .app firmata su Mac con collect_signed_build.py."
+    },
+    {
+      "check": "apple.matcher",
+      "status": "MISSING",
+      "message": "swcutil sul Mac: positivi e negativi, poi confronto origine/CDN Apple."
+    },
+    {
+      "check": "iphone.endToEnd",
+      "status": "MISSING",
+      "message": "Stessa build installata: apertura da Note, avvio freddo/caldo, URL nell'handler e negativi."
+    },
+    {
+      "check": "wearable.configuration",
+      "status": "MISSING",
+      "message": "Confermare app ricevente e URL effettivo configurato in Meta."
+    }
+  ]
+}
