@@ -48,4 +48,8 @@ jobs:
           psql "$ARGO_TEST_DATABASE_URL" -c "SELECT version()"
           npm ls --all
       - run: npm test
+      # Offline contract checks only; this job cannot pass the wearable gate.
+      - run: python3 --version
+      - run: npm run test:universal-links
+      - run: npm run verify:universal-links
       - run: npm run test:postgres

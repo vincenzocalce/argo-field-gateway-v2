@@ -3,6 +3,15 @@
 Stato T0: **REVIEW_REQUIRED**. La patch e i test locali non costituiscono
 verifica del dominio pubblico, TLS, entitlement o apertura dell'app iOS.
 
+## Verificatore VIN-7 — 18/10/2026
+
+Disponibile il [verificatore riproducibile](UNIVERSAL-LINKS-VERIFIER.md) per
+JSON AASA, host, callback esatto e manifest della build firmata. Il riferimento
+VIN-7 riconciliato usa `www.seagroup.info`; le citazioni dell'apex nelle sezioni
+storiche sotto non sono una decisione successiva. Nessuna wildcard autorizzata.
+I risultati statici non chiudono il gate. Vedi anche le
+[evidenze del 18 ottobre](evidence/vin-7/2026-10-18/README.md).
+
 ## Integrazione gateway iOS — 13/10/2026
 
 File AASA e perimetro del callback restano invariati. La factory è ora in

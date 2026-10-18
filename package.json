@@ -9,6 +9,8 @@
     "test:token": "node --test test/verify-token.test.js test/startup.test.js",
     "test:5v": "node --test test-5v.cjs",
     "test:aasa": "node --test test/aasa.test.js",
+    "verify:universal-links": "python3 tools/universal_links/verify.py",
+    "test:universal-links": "python3 -m unittest discover -s tools/universal_links -p 'test_*.py' -v",
     "test:ios": "node --test test/app.test.js test/database.test.js test/privacy.test.js test/gateway-integration.test.js",
     "test:postgres": "node --test test/postgres/*.test.js"
   },
