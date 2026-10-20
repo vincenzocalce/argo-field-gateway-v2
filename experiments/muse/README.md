@@ -79,6 +79,15 @@ Previsioni dei carichi, distribuzione del lavoro e rischio DMS richiedono esperi
 
 ## Riprodurre i test del codice
 
+### Benchmark separato — 20 ottobre 2026
+
+Il [benchmark v1](benchmark-v1/README.md) aggiunge 36 messaggi sintetici nuovi,
+57 righe attese e un protocollo di 108 tentativi effettivi ancora non eseguiti.
+I riferimenti sono proposti e in attesa di revisione indipendente. I 28 test
+offline (16 precedenti più 12 nuovi) verificano codice e controlli sintetici,
+senza validare l’accuratezza del modello. Prompt e fixture precedenti restano
+invariati; revisione umana obbligatoria e importazione automatica esclusa.
+
 ```bash
 node --test experiments/muse/*.test.js
 ```

@@ -1,0 +1,1498 @@
+{
+  "benchmark_id": "argo-muse-independent-synthetic-v1",
+  "version": "1.0.0",
+  "authored_on": "2026-10-20",
+  "status": "PROPOSED_REFERENCES_NOT_INDEPENDENTLY_REVIEWED",
+  "provenance": "Nuovi messaggi sintetici redatti per questo benchmark; separati dalle fixture PR15. Separazione dei dati, non indipendenza del revisore o rappresentatività statistica.",
+  "base_commit": "3e436ac021fb04314de70fab37f24231439c4c2a",
+  "review_required": true,
+  "eligible_for_import": false,
+  "cases": [
+    {
+      "id": "B001",
+      "title": "Cambio intestazione semplice",
+      "tags": [
+        "area_change"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Quarzo\nAlias S01 secco 137 kg, umido 23 kg, targa ZZ101ZZ\nSettore Ambra\nAlias S02 secco 219 kg, umido 41 kg, targa ZZ102ZZ",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Quarzo",
+            "operator": "Alias S01",
+            "plate": "ZZ101ZZ",
+            "secco_kg": 137,
+            "umido_kg": 23
+          },
+          {
+            "area": "Settore Ambra",
+            "operator": "Alias S02",
+            "plate": "ZZ102ZZ",
+            "secco_kg": 219,
+            "umido_kg": 41
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Ogni intestazione si applica alla riga successiva; non trascinare Quarzo.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B002",
+      "title": "Ritorno a un territorio precedente",
+      "tags": [
+        "area_change",
+        "order"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Iris\nAlias S03 secco 71 kg\nZona Olmo\nAlias S04 secco 82 kg\nZona Iris\nAlias S05 secco 93 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Iris",
+            "operator": "Alias S03",
+            "plate": null,
+            "secco_kg": 71,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Olmo",
+            "operator": "Alias S04",
+            "plate": null,
+            "secco_kg": 82,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Iris",
+            "operator": "Alias S05",
+            "plate": null,
+            "secco_kg": 93,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Tre comunicazioni ordinate, nessuna aggregazione per zona.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B003",
+      "title": "Intestazione ripetuta senza nuova riga",
+      "tags": [
+        "area_change",
+        "empty_header"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nArea Selce\nArea Selce\nAlias S06 umido 36 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Area Selce",
+            "operator": "Alias S06",
+            "plate": null,
+            "secco_kg": null,
+            "umido_kg": 36
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Le intestazioni non sono registrazioni.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B004",
+      "title": "Area prima mancante poi esplicita",
+      "tags": [
+        "area_change",
+        "missing"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nAlias S07 secco 114 kg\nSettore Rame\nAlias S08 secco 115 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": null,
+            "operator": "Alias S07",
+            "plate": null,
+            "secco_kg": 114,
+            "umido_kg": null
+          },
+          {
+            "area": "Settore Rame",
+            "operator": "Alias S08",
+            "plate": null,
+            "secco_kg": 115,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Nessuna attribuzione retroattiva alla prima riga.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B005",
+      "title": "Etichette territoriali simili",
+      "tags": [
+        "territory_labels"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nAgro\nAlias S09 secco 126 kg\nAgro nocerino-sarnese\nAlias S10 secco 127 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Agro",
+            "operator": "Alias S09",
+            "plate": null,
+            "secco_kg": 126,
+            "umido_kg": null
+          },
+          {
+            "area": "Agro nocerino-sarnese",
+            "operator": "Alias S10",
+            "plate": null,
+            "secco_kg": 127,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Conservare entrambe le stringhe; nessuna equivalenza geografica assunta.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B006",
+      "title": "Punteggiatura nelle etichette",
+      "tags": [
+        "territory_labels"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nPompei/Stabia\nAlias S11 secco 138 kg\nPompei - Stabia\nAlias S12 secco 139 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Pompei/Stabia",
+            "operator": "Alias S11",
+            "plate": null,
+            "secco_kg": 138,
+            "umido_kg": null
+          },
+          {
+            "area": "Pompei - Stabia",
+            "operator": "Alias S12",
+            "plate": null,
+            "secco_kg": 139,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Slash e trattino fanno parte di etichette distinte.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B007",
+      "title": "Ripetizione identica adiacente",
+      "tags": [
+        "repetition"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Opale\nAlias S13 secco 147 kg, targa ZZ113ZZ\nAlias S13 secco 147 kg, targa ZZ113ZZ",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Opale",
+            "operator": "Alias S13",
+            "plate": "ZZ113ZZ",
+            "secco_kg": 147,
+            "umido_kg": null
+          },
+          {
+            "area": "Settore Opale",
+            "operator": "Alias S13",
+            "plate": "ZZ113ZZ",
+            "secco_kg": 147,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Due comunicazioni uguali devono restare due righe; duplicato operativo non dimostrato.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B008",
+      "title": "Ripetizione separata da altra comunicazione",
+      "tags": [
+        "repetition",
+        "order"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Corallo\nAlias S14 secco 158 kg\nAlias S15 umido 49 kg\nAlias S14 secco 158 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Corallo",
+            "operator": "Alias S14",
+            "plate": null,
+            "secco_kg": 158,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Corallo",
+            "operator": "Alias S15",
+            "plate": null,
+            "secco_kg": null,
+            "umido_kg": 49
+          },
+          {
+            "area": "Zona Corallo",
+            "operator": "Alias S14",
+            "plate": null,
+            "secco_kg": 158,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Conservare molteplicità e ordine A-B-A.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B009",
+      "title": "Stesso alias in aree diverse",
+      "tags": [
+        "repetition",
+        "area_change"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Cedro\nAlias S16 secco 169 kg\nZona Cedro sud\nAlias S16 secco 169 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Cedro",
+            "operator": "Alias S16",
+            "plate": null,
+            "secco_kg": 169,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Cedro sud",
+            "operator": "Alias S16",
+            "plate": null,
+            "secco_kg": 169,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "La seconda riga ha un contesto territoriale distinto.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B010",
+      "title": "Stesso mezzo con due alias",
+      "tags": [
+        "repetition",
+        "plate"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Rubino\nAlias S17 secco 173 kg, targa ZZ117ZZ\nAlias S18 secco 174 kg, targa ZZ117ZZ",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Rubino",
+            "operator": "Alias S17",
+            "plate": "ZZ117ZZ",
+            "secco_kg": 173,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Rubino",
+            "operator": "Alias S18",
+            "plate": "ZZ117ZZ",
+            "secco_kg": 174,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "La targa comune non è una chiave per unire righe.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B011",
+      "title": "Due conferimenti esplicitamente distinti",
+      "tags": [
+        "repetition",
+        "separate_events"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Giada\nPrimo conferimento: Alias S19 secco 181 kg\nSecondo conferimento: Alias S19 secco 182 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Giada",
+            "operator": "Alias S19",
+            "plate": null,
+            "secco_kg": 181,
+            "umido_kg": null
+          },
+          {
+            "area": "Settore Giada",
+            "operator": "Alias S19",
+            "plate": null,
+            "secco_kg": 182,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "I due eventi dichiarati non sono alternative e non vanno sommati.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B012",
+      "title": "Inoltro ripetuto esplicito",
+      "tags": [
+        "repetition"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nArea Turchese\nAlias S20 secco 193 kg\nMessaggio inoltrato: Alias S20 secco 193 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Area Turchese",
+            "operator": "Alias S20",
+            "plate": null,
+            "secco_kg": 193,
+            "umido_kg": null
+          },
+          {
+            "area": "Area Turchese",
+            "operator": "Alias S20",
+            "plate": null,
+            "secco_kg": 193,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Anche una comunicazione inoltrata si conserva, senza decidere se sia lo stesso conferimento.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B013",
+      "title": "Targa non comunicata",
+      "tags": [
+        "missing"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Salice\nAlias S21 secco 204 kg, umido 54 kg; targa non comunicata",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Salice",
+            "operator": "Alias S21",
+            "plate": null,
+            "secco_kg": 204,
+            "umido_kg": 54
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Targa assente null, non completata per analogia.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B014",
+      "title": "Solo frazione umida",
+      "tags": [
+        "missing"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Acero\nAlias S22 umido 65 kg, targa ZZ122ZZ",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Acero",
+            "operator": "Alias S22",
+            "plate": "ZZ122ZZ",
+            "secco_kg": null,
+            "umido_kg": 65
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Secco non dichiarato null.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B015",
+      "title": "Pesi entrambi mancanti",
+      "tags": [
+        "missing",
+        "incomplete"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Pino\nAlias S23 targa ZZ123ZZ, pesi da comunicare",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Pino",
+            "operator": "Alias S23",
+            "plate": "ZZ123ZZ",
+            "secco_kg": null,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Una registrazione identificata resta presente anche senza pesi.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B016",
+      "title": "Operatore mancante",
+      "tags": [
+        "missing",
+        "incomplete"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Tiglio\nOperatore non indicato; targa ZZ124ZZ; secco 216 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Tiglio",
+            "operator": null,
+            "plate": "ZZ124ZZ",
+            "secco_kg": 216,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Non usare la targa o il nome della zona come operatore.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B017",
+      "title": "Data non comunicata",
+      "tags": [
+        "missing",
+        "date"
+      ],
+      "synthetic": true,
+      "source_text": "Entrata\nZona Betulla\nAlias S25 secco 227 kg",
+      "expected": {
+        "date": null,
+        "rows": [
+          {
+            "area": "Zona Betulla",
+            "operator": "Alias S25",
+            "plate": null,
+            "secco_kg": 227,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Non inferire la data dal giorno di esecuzione.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B018",
+      "title": "Targa illeggibile",
+      "tags": [
+        "missing",
+        "illegible"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Larice\nAlias S26 secco 238 kg, umido 76 kg; targa illeggibile",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Larice",
+            "operator": "Alias S26",
+            "plate": null,
+            "secco_kg": 238,
+            "umido_kg": 76
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Illeggibile null, senza ricostruire caratteri.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B019",
+      "title": "Zero secco esplicito",
+      "tags": [
+        "zero",
+        "missing"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Topazio\nAlias S27 secco 0 kg, umido non comunicato",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Topazio",
+            "operator": "Alias S27",
+            "plate": null,
+            "secco_kg": 0,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Distinguere zero secco da umido assente.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B020",
+      "title": "Zero umido esplicito",
+      "tags": [
+        "zero"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Granato\nAlias S28 secco 249 kg, umido 0 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Granato",
+            "operator": "Alias S28",
+            "plate": null,
+            "secco_kg": 249,
+            "umido_kg": 0
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Lo zero esplicito è un numero, non null.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B021",
+      "title": "Entrambe le frazioni zero",
+      "tags": [
+        "zero"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Ametista\nAlias S29 secco 0 kg, umido 0 kg, targa ZZ129ZZ",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Ametista",
+            "operator": "Alias S29",
+            "plate": "ZZ129ZZ",
+            "secco_kg": 0,
+            "umido_kg": 0
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Conservare la riga con due zeri dichiarati.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B022",
+      "title": "Decimali con virgola",
+      "tags": [
+        "numeric",
+        "decimal"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Onice\nAlias S30 secco 12,5 kg, umido 3,75 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Onice",
+            "operator": "Alias S30",
+            "plate": null,
+            "secco_kg": 12.5,
+            "umido_kg": 3.75
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Conversione numerica esplicita di virgole decimali; nessun arrotondamento.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B023",
+      "title": "Quantità elevata senza portata",
+      "tags": [
+        "numeric",
+        "no_capacity"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Zaffiro\nAlias S31 secco 4327 kg, umido 118 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Zaffiro",
+            "operator": "Alias S31",
+            "plate": null,
+            "secco_kg": 4327,
+            "umido_kg": 118
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Nessuna portata disponibile: non dichiarare sovraccarico né correggere il peso.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B024",
+      "title": "Zero e valore assente su righe diverse",
+      "tags": [
+        "zero",
+        "missing",
+        "repetition"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nSettore Perla\nAlias S32 secco 0 kg\nAlias S33 secco non comunicato, umido 0 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Perla",
+            "operator": "Alias S32",
+            "plate": null,
+            "secco_kg": 0,
+            "umido_kg": null
+          },
+          {
+            "area": "Settore Perla",
+            "operator": "Alias S33",
+            "plate": null,
+            "secco_kg": null,
+            "umido_kg": 0
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Zero non deve propagarsi ai campi assenti di altre righe.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B025",
+      "title": "Due quantità contrastanti",
+      "tags": [
+        "conflict"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Mica\nPrima comunicazione: Alias S34 targa ZZ134ZZ, secco 315 kg, umido 91 kg\nComunicazione alternativa per lo stesso conferimento: Alias S34 targa ZZ134ZZ, secco 351 kg, umido 91 kg\nNon è chiarito quale sia valida.",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Mica",
+            "operator": "Alias S34",
+            "plate": "ZZ134ZZ",
+            "secco_kg": 315,
+            "umido_kg": 91
+          },
+          {
+            "area": "Zona Mica",
+            "operator": "Alias S34",
+            "plate": "ZZ134ZZ",
+            "secco_kg": 351,
+            "umido_kg": 91
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Conservare entrambi i valori; segnalare conflitto irrisolto.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Due quantità secco alternative per lo stesso conferimento; validità irrisolta"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B026",
+      "title": "Tre alternative irrisolte",
+      "tags": [
+        "conflict"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Basalto\nAlias S35 secco 402 kg\nAlternativa per lo stesso conferimento: Alias S35 secco 420 kg\nTerza alternativa: Alias S35 secco 442 kg\nNessuna conferma disponibile.",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Basalto",
+            "operator": "Alias S35",
+            "plate": null,
+            "secco_kg": 402,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Basalto",
+            "operator": "Alias S35",
+            "plate": null,
+            "secco_kg": 420,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Basalto",
+            "operator": "Alias S35",
+            "plate": null,
+            "secco_kg": 442,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Tre righe, nessuna mediana o ultima quantità prevalente.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Tre quantità alternative non risolte"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B027",
+      "title": "Conflitto fra zero e valore positivo",
+      "tags": [
+        "conflict",
+        "zero"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Travertino\nAlias S36 umido 0 kg\nValore alternativo per lo stesso conferimento: Alias S36 umido 87 kg\nDato da verificare.",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Travertino",
+            "operator": "Alias S36",
+            "plate": null,
+            "secco_kg": null,
+            "umido_kg": 0
+          },
+          {
+            "area": "Zona Travertino",
+            "operator": "Alias S36",
+            "plate": null,
+            "secco_kg": null,
+            "umido_kg": 87
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Non scartare lo zero come campo assente.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Zero e 87 kg sono alternative irrisolte"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B028",
+      "title": "Targhe contrastanti",
+      "tags": [
+        "conflict",
+        "plate"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Arenaria\nAlias S37 secco 263 kg, targa ZZ137ZZ\nAlternativa sullo stesso conferimento: Alias S37 secco 263 kg, targa ZZ138ZZ\nTarga da verificare.",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Arenaria",
+            "operator": "Alias S37",
+            "plate": "ZZ137ZZ",
+            "secco_kg": 263,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Arenaria",
+            "operator": "Alias S37",
+            "plate": "ZZ138ZZ",
+            "secco_kg": 263,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "La quantità uguale non autorizza fusione delle alternative.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Targhe alternative per lo stesso conferimento"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B029",
+      "title": "Territori contrastanti",
+      "tags": [
+        "conflict",
+        "area_change"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Dolomia\nAlias S38 secco 274 kg, targa ZZ139ZZ\nZona Dolomia est\nComunicazione alternativa sullo stesso conferimento: Alias S38 secco 274 kg, targa ZZ139ZZ\nNon sappiamo quale area sia corretta.",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Dolomia",
+            "operator": "Alias S38",
+            "plate": "ZZ139ZZ",
+            "secco_kg": 274,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Dolomia est",
+            "operator": "Alias S38",
+            "plate": "ZZ139ZZ",
+            "secco_kg": 274,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Ogni riga mantiene la propria intestazione, conflitto da risolvere fuori dal modello.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Area alternativa irrisolta"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B030",
+      "title": "Rettifica dichiarata ma storico conservato",
+      "tags": [
+        "conflict",
+        "correction"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Calcedonio\nAlias S39 secco 286 kg\nRettifica dichiarata dal mittente: Alias S39 secco 268 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Calcedonio",
+            "operator": "Alias S39",
+            "plate": null,
+            "secco_kg": 286,
+            "umido_kg": null
+          },
+          {
+            "area": "Zona Calcedonio",
+            "operator": "Alias S39",
+            "plate": null,
+            "secco_kg": 268,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Preservare originale e rettifica; attribuire la correzione al mittente senza cancellare lo storico.",
+      "anomaly_review": {
+        "required_concepts": [
+          "La fonte dichiara una rettifica da 286 a 268 kg; non una scelta autonoma del modello"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B031",
+      "title": "Organizzazione con area esplicitamente assente",
+      "tags": [
+        "organization",
+        "missing"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Fluorite\nAlias S40 secco 297 kg\nOrganizzazione Cooperativa Prisma, area non indicata: secco 608 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Fluorite",
+            "operator": "Alias S40",
+            "plate": null,
+            "secco_kg": 297,
+            "umido_kg": null
+          },
+          {
+            "area": null,
+            "operator": "Cooperativa Prisma",
+            "plate": null,
+            "secco_kg": 608,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Il reset esplicito area non indicata prevale sull’intestazione; il nome non è territorio.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Cooperativa Prisma è un’organizzazione, ruolo nel campo operator da chiarire"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B032",
+      "title": "Organizzazione con territorio esplicito",
+      "tags": [
+        "organization",
+        "territory_labels"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nOrganizzazione Cooperativa Prisma, area esplicitamente indicata: Zona Fluorite nord; secco 619 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Fluorite nord",
+            "operator": "Cooperativa Prisma",
+            "plate": null,
+            "secco_kg": 619,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Usare il territorio indicato senza dedurlo dal nome dell’organizzazione.",
+      "anomaly_review": {
+        "required_concepts": [
+          "Cooperativa Prisma è un’organizzazione, ruolo nel campo operator da chiarire"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B033",
+      "title": "Quantità priva di frazione",
+      "tags": [
+        "incomplete",
+        "untyped_quantity"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Smeraldo\nAlias S41 targa ZZ141ZZ, quantità 308 kg, frazione non specificata",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Smeraldo",
+            "operator": "Alias S41",
+            "plate": "ZZ141ZZ",
+            "secco_kg": null,
+            "umido_kg": null
+          }
+        ],
+        "conflict_required": true
+      },
+      "reference_rationale": "Lo schema non ha quantità non classificata: entrambi i pesi null e 308 kg conservati nella segnalazione.",
+      "anomaly_review": {
+        "required_concepts": [
+          "308 kg non attribuibili a secco o umido; frazione assente"
+        ],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B034",
+      "title": "Righe vuote e campi spezzati",
+      "tags": [
+        "format",
+        "incomplete"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\r\nEntrata\r\n\r\nZona Lapislazzuli\r\nAlias S42\r\n\r\nsecco 319 kg\r\numido 29 kg\r\ntarga ZZ142ZZ\r\n",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Lapislazzuli",
+            "operator": "Alias S42",
+            "plate": "ZZ142ZZ",
+            "secco_kg": 319,
+            "umido_kg": 29
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "I campi su più righe appartengono all’unica registrazione; conservare input CRLF e righe vuote.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B035",
+      "title": "Solo intestazione senza registrazioni",
+      "tags": [
+        "empty_header",
+        "incomplete"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nZona Ossidiana\nDati dei conferimenti non ancora comunicati.",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [],
+        "conflict_required": false
+      },
+      "reference_rationale": "Nessuna riga completamente inventata; assenza di registrazioni non equivale a totale zero.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "B036",
+      "title": "Ordine dei campi e alias composti",
+      "tags": [
+        "format",
+        "territory_labels"
+      ],
+      "synthetic": true,
+      "source_text": "04/11/2026\nEntrata\nCostiera amalfitana - settore sperimentale\nTarga ZZ143ZZ; umido 44 kg; operatore Alias Squadra 43 bis; secco 327 kg",
+      "expected": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Costiera amalfitana - settore sperimentale",
+            "operator": "Alias Squadra 43 bis",
+            "plate": "ZZ143ZZ",
+            "secco_kg": 327,
+            "umido_kg": 44
+          }
+        ],
+        "conflict_required": false
+      },
+      "reference_rationale": "Ordine testuale dei campi libero; etichetta e alias integrali.",
+      "anomaly_review": {
+        "required_concepts": [],
+        "forbidden_claims": [
+          "Scelta di una verità operativa non dichiarata",
+          "Portata massima o anomalia di peso dedotta",
+          "Deduplicazione o somma delle comunicazioni"
+        ]
+      },
+      "independent_review": {
+        "status": "PENDING",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,840 @@
+{
+  "benchmark_id": "argo-muse-independent-synthetic-v1",
+  "mode": "LIVE",
+  "integrity": {
+    "cases": 36,
+    "expected_rows": 57,
+    "exact_or_whitespace_normalized_fixture_overlap": 0,
+    "reference_review": "PROPOSED_REFERENCES_NOT_INDEPENDENTLY_REVIEWED",
+    "prompt_version": "v4-generalized",
+    "prompt_sha256": "fb9948e89784bd9418298bc7e259e4179f9c8049bfd1fdb210eeaf4108ad487b",
+    "corpus_sha256": "94be4b0fa2264ac65374e7868a378aff5bb355bfb4fa9c17487c9b1511a7b287"
+  },
+  "summary": {
+    "planned": 108,
+    "not_run": 108,
+    "invalid": 0,
+    "call_failed": 0,
+    "valid": 0,
+    "deterministic_exact": 0,
+    "expected_fields_attempted": 0,
+    "exact_fields": 0,
+    "omitted_known_values": 0,
+    "altered_values": 0,
+    "invented_values": 0,
+    "reported_cost_sum": null,
+    "reports_with_cost": 0,
+    "costs_unknown": 0,
+    "durations_ms": [],
+    "exact_field_rate_attempted": null,
+    "deterministic_exact_rate_attempted": null,
+    "coverage": 0
+  },
+  "results": [
+    {
+      "case_id": "B001",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B002",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B003",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B004",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B005",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B006",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B007",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B008",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B009",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B010",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B011",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B012",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B013",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B014",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B015",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B016",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B017",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B018",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B019",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B020",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B021",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B022",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B023",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B024",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B025",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B026",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B027",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B028",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B029",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B030",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B031",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B032",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B033",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B034",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B035",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B036",
+      "repeat": 1,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B001",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B002",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B003",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B004",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B005",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B006",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B007",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B008",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B009",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B010",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B011",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B012",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B013",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B014",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B015",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B016",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B017",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B018",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B019",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B020",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B021",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B022",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B023",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B024",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B025",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B026",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B027",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B028",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B029",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B030",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B031",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B032",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B033",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B034",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B035",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B036",
+      "repeat": 2,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B001",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B002",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B003",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B004",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B005",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B006",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B007",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B008",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B009",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B010",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B011",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B012",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B013",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B014",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B015",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B016",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B017",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B018",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B019",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B020",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B021",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B022",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B023",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B024",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B025",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B026",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B027",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B028",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B029",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B030",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B031",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B032",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B033",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B034",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B035",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "B036",
+      "repeat": 3,
+      "status": "NOT_RUN"
+    }
+  ],
+  "variability": [
+    {
+      "case_id": "B001",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B002",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B003",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B004",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B005",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B006",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B007",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B008",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B009",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B010",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B011",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B012",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B013",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B014",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B015",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B016",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B017",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B018",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B019",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B020",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B021",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B022",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B023",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B024",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B025",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B026",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B027",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B028",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B029",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B030",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B031",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B032",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B033",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B034",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B035",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    },
+    {
+      "case_id": "B036",
+      "valid_repeats": 0,
+      "planned_repeats": 3,
+      "distinct_structured_results": null,
+      "distinct_results_including_anomalies": null
+    }
+  ],
+  "model_accuracy_status": "NOT_VALIDATED",
+  "independent_reference_review": "PENDING",
+  "semantic_review": "PENDING",
+  "review_required": true,
+  "eligible_for_import": false,
+  "limitations": [
+    "Percentuali condizionate ai tentativi presenti; copertura sempre esposta, errori inclusi nel denominatore.",
+    "Hash e modo sono metadati dichiarati, non attestazione indipendente del provider.",
+    "Conteggi di invenzione/alterazione dipendono dall’allineamento documentato; revisionare casi ambigui.",
+    "Costo dichiarato dal provider; eventuali tentativi senza report restano ignoti. Nessuna metrica LIVE da simulazioni."
+  ]
+}

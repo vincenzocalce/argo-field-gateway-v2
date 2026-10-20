@@ -1,0 +1,2734 @@
+{
+  "mode": "SIMULATED_SELF_CHECK",
+  "integrity": {
+    "cases": 36,
+    "expected_rows": 57,
+    "exact_or_whitespace_normalized_fixture_overlap": 0,
+    "reference_review": "PROPOSED_REFERENCES_NOT_INDEPENDENTLY_REVIEWED",
+    "prompt_version": "v4-generalized",
+    "prompt_sha256": "fb9948e89784bd9418298bc7e259e4179f9c8049bfd1fdb210eeaf4108ad487b",
+    "corpus_sha256": "94be4b0fa2264ac65374e7868a378aff5bb355bfb4fa9c17487c9b1511a7b287"
+  },
+  "network_calls": 0,
+  "actual_model_runs": 0,
+  "model_accuracy_status": "NOT_VALIDATED",
+  "review_required": true,
+  "eligible_for_import": false,
+  "explanation": "Oracle copiati dai riferimenti e alterazioni deliberate: verifica del valutatore, nessuna inferenza del modello.",
+  "exact_controls": [
+    {
+      "case_id": "B001",
+      "deterministic": {
+        "fixture": "B001",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B002",
+      "deterministic": {
+        "fixture": "B002",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 16,
+        "exact_fields": 16,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B003",
+      "deterministic": {
+        "fixture": "B003",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B004",
+      "deterministic": {
+        "fixture": "B004",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B005",
+      "deterministic": {
+        "fixture": "B005",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B006",
+      "deterministic": {
+        "fixture": "B006",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B007",
+      "deterministic": {
+        "fixture": "B007",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B008",
+      "deterministic": {
+        "fixture": "B008",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 16,
+        "exact_fields": 16,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B009",
+      "deterministic": {
+        "fixture": "B009",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B010",
+      "deterministic": {
+        "fixture": "B010",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B011",
+      "deterministic": {
+        "fixture": "B011",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B012",
+      "deterministic": {
+        "fixture": "B012",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B013",
+      "deterministic": {
+        "fixture": "B013",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B014",
+      "deterministic": {
+        "fixture": "B014",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B015",
+      "deterministic": {
+        "fixture": "B015",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B016",
+      "deterministic": {
+        "fixture": "B016",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B017",
+      "deterministic": {
+        "fixture": "B017",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B018",
+      "deterministic": {
+        "fixture": "B018",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B019",
+      "deterministic": {
+        "fixture": "B019",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B020",
+      "deterministic": {
+        "fixture": "B020",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B021",
+      "deterministic": {
+        "fixture": "B021",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B022",
+      "deterministic": {
+        "fixture": "B022",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B023",
+      "deterministic": {
+        "fixture": "B023",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B024",
+      "deterministic": {
+        "fixture": "B024",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B025",
+      "deterministic": {
+        "fixture": "B025",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Due quantità secco alternative per lo stesso conferimento; validità irrisolta"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B026",
+      "deterministic": {
+        "fixture": "B026",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 16,
+        "exact_fields": 16,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Tre quantità alternative non risolte"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B027",
+      "deterministic": {
+        "fixture": "B027",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Zero e 87 kg sono alternative irrisolte"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B028",
+      "deterministic": {
+        "fixture": "B028",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Targhe alternative per lo stesso conferimento"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B029",
+      "deterministic": {
+        "fixture": "B029",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Area alternativa irrisolta"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B030",
+      "deterministic": {
+        "fixture": "B030",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "La fonte dichiara una rettifica da 286 a 268 kg; non una scelta autonoma del modello"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B031",
+      "deterministic": {
+        "fixture": "B031",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 11,
+        "exact_fields": 11,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Cooperativa Prisma è un’organizzazione, ruolo nel campo operator da chiarire"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B032",
+      "deterministic": {
+        "fixture": "B032",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "Cooperativa Prisma è un’organizzazione, ruolo nel campo operator da chiarire"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B033",
+      "deterministic": {
+        "fixture": "B033",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [
+        "308 kg non attribuibili a secco o umido; frazione assente"
+      ],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B034",
+      "deterministic": {
+        "fixture": "B034",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B035",
+      "deterministic": {
+        "fixture": "B035",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 1,
+        "exact_fields": 1,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    },
+    {
+      "case_id": "B036",
+      "deterministic": {
+        "fixture": "B036",
+        "row_differences": {
+          "missing_or_changed": 0,
+          "unexpected_or_changed": 0
+        },
+        "checks": {
+          "date_exact": true,
+          "rows_exact": true,
+          "conflict_flag_present": true,
+          "review_required": true,
+          "import_disabled": true
+        },
+        "passed": true,
+        "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+      },
+      "metrics": {
+        "expected_fields": 6,
+        "exact_fields": 6,
+        "omitted_fields": 0,
+        "omitted_known_values": 0,
+        "altered_values": 0,
+        "invented_values": 0,
+        "missing_rows": 0,
+        "extra_rows": 0,
+        "reordered": false,
+        "exact_field_rate": 1
+      },
+      "alignment": [
+        [
+          0,
+          0
+        ]
+      ],
+      "differences": [],
+      "semantic_review_status": "PENDING",
+      "required_anomaly_concepts": [],
+      "anomaly_presence_only": true,
+      "model_accuracy_status": "NOT_VALIDATED",
+      "review_required": true,
+      "eligible_for_import": false
+    }
+  ],
+  "mutation_controls": [
+    {
+      "id": "row_omission",
+      "case_id": "B001",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Quarzo",
+            "operator": "Alias S01",
+            "plate": "ZZ101ZZ",
+            "secco_kg": 137,
+            "umido_kg": 23
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B001",
+        "deterministic": {
+          "fixture": "B001",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 0
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 6,
+          "omitted_fields": 5,
+          "omitted_known_values": 5,
+          "altered_values": 0,
+          "invented_values": 0,
+          "missing_rows": 1,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.5454545454545454
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            null
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].area",
+            "actual_path": null,
+            "expected": "Settore Ambra",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].operator",
+            "actual_path": null,
+            "expected": "Alias S02",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].plate",
+            "actual_path": null,
+            "expected": "ZZ102ZZ",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].secco_kg",
+            "actual_path": null,
+            "expected": 219,
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].umido_kg",
+            "actual_path": null,
+            "expected": 41,
+            "actual": null
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "field_omission",
+      "case_id": "B001",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Quarzo",
+            "operator": "Alias S01",
+            "plate": "ZZ101ZZ",
+            "secco_kg": null,
+            "umido_kg": 23
+          },
+          {
+            "area": "Settore Ambra",
+            "operator": "Alias S02",
+            "plate": "ZZ102ZZ",
+            "secco_kg": 219,
+            "umido_kg": 41
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B001",
+        "deterministic": {
+          "fixture": "B001",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 10,
+          "omitted_fields": 1,
+          "omitted_known_values": 1,
+          "altered_values": 0,
+          "invented_values": 0,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.9090909090909091
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "OMITTED_VALUE",
+            "expected_path": "rows[0].secco_kg",
+            "actual_path": "rows[0].secco_kg",
+            "expected": 137,
+            "actual": null
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "weight_alteration",
+      "case_id": "B001",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Quarzo",
+            "operator": "Alias S01",
+            "plate": "ZZ101ZZ",
+            "secco_kg": 999,
+            "umido_kg": 23
+          },
+          {
+            "area": "Settore Ambra",
+            "operator": "Alias S02",
+            "plate": "ZZ102ZZ",
+            "secco_kg": 219,
+            "umido_kg": 41
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B001",
+        "deterministic": {
+          "fixture": "B001",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 10,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 1,
+          "invented_values": 0,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.9090909090909091
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "ALTERED_VALUE",
+            "expected_path": "rows[0].secco_kg",
+            "actual_path": "rows[0].secco_kg",
+            "expected": 137,
+            "actual": 999
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "invented_plate",
+      "case_id": "B013",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Salice",
+            "operator": "Alias S21",
+            "plate": "ZZ999ZZ",
+            "secco_kg": 204,
+            "umido_kg": 54
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B013",
+        "deterministic": {
+          "fixture": "B013",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 6,
+          "exact_fields": 5,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 0,
+          "invented_values": 1,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.8333333333333334
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": "rows[0].plate",
+            "actual_path": "rows[0].plate",
+            "expected": null,
+            "actual": "ZZ999ZZ"
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "null_to_zero",
+      "case_id": "B019",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Topazio",
+            "operator": "Alias S27",
+            "plate": null,
+            "secco_kg": 0,
+            "umido_kg": 0
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B019",
+        "deterministic": {
+          "fixture": "B019",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 6,
+          "exact_fields": 5,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 0,
+          "invented_values": 1,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.8333333333333334
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": "rows[0].umido_kg",
+            "actual_path": "rows[0].umido_kg",
+            "expected": null,
+            "actual": 0
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "zero_to_null",
+      "case_id": "B020",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Granato",
+            "operator": "Alias S28",
+            "plate": null,
+            "secco_kg": 249,
+            "umido_kg": null
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B020",
+        "deterministic": {
+          "fixture": "B020",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 6,
+          "exact_fields": 5,
+          "omitted_fields": 1,
+          "omitted_known_values": 1,
+          "altered_values": 0,
+          "invented_values": 0,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.8333333333333334
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "OMITTED_VALUE",
+            "expected_path": "rows[0].umido_kg",
+            "actual_path": "rows[0].umido_kg",
+            "expected": 0,
+            "actual": null
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "deduplication",
+      "case_id": "B007",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Opale",
+            "operator": "Alias S13",
+            "plate": "ZZ113ZZ",
+            "secco_kg": 147,
+            "umido_kg": null
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B007",
+        "deterministic": {
+          "fixture": "B007",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 0
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 6,
+          "omitted_fields": 5,
+          "omitted_known_values": 4,
+          "altered_values": 0,
+          "invented_values": 0,
+          "missing_rows": 1,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.5454545454545454
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            null
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].area",
+            "actual_path": null,
+            "expected": "Settore Opale",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].operator",
+            "actual_path": null,
+            "expected": "Alias S13",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].plate",
+            "actual_path": null,
+            "expected": "ZZ113ZZ",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].secco_kg",
+            "actual_path": null,
+            "expected": 147,
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].umido_kg",
+            "actual_path": null,
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "collapsed_conflict",
+      "case_id": "B025",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Mica",
+            "operator": "Alias S34",
+            "plate": "ZZ134ZZ",
+            "secco_kg": 315,
+            "umido_kg": 91
+          }
+        ],
+        "anomalies": [
+          "SIMULATED: segnalazione di controllo; semantica non validata"
+        ]
+      },
+      "comparison": {
+        "case_id": "B025",
+        "deterministic": {
+          "fixture": "B025",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 0
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 6,
+          "omitted_fields": 5,
+          "omitted_known_values": 5,
+          "altered_values": 0,
+          "invented_values": 0,
+          "missing_rows": 1,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.5454545454545454
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            null
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].area",
+            "actual_path": null,
+            "expected": "Zona Mica",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].operator",
+            "actual_path": null,
+            "expected": "Alias S34",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].plate",
+            "actual_path": null,
+            "expected": "ZZ134ZZ",
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].secco_kg",
+            "actual_path": null,
+            "expected": 351,
+            "actual": null
+          },
+          {
+            "kind": "OMITTED_FIELD",
+            "expected_path": "rows[1].umido_kg",
+            "actual_path": null,
+            "expected": 91,
+            "actual": null
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [
+          "Due quantità secco alternative per lo stesso conferimento; validità irrisolta"
+        ],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "extra_row",
+      "case_id": "B001",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Quarzo",
+            "operator": "Alias S01",
+            "plate": "ZZ101ZZ",
+            "secco_kg": 137,
+            "umido_kg": 23
+          },
+          {
+            "area": "Settore Ambra",
+            "operator": "Alias S02",
+            "plate": "ZZ102ZZ",
+            "secco_kg": 219,
+            "umido_kg": 41
+          },
+          {
+            "area": "Inventata",
+            "operator": "Alias fittizio",
+            "plate": "ZZ999ZZ",
+            "secco_kg": 9,
+            "umido_kg": 1
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B001",
+        "deterministic": {
+          "fixture": "B001",
+          "row_differences": {
+            "missing_or_changed": 0,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 11,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 0,
+          "invented_values": 5,
+          "missing_rows": 0,
+          "extra_rows": 1,
+          "reordered": false,
+          "exact_field_rate": 1
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            null,
+            2
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": null,
+            "actual_path": "rows[2].area",
+            "expected": null,
+            "actual": "Inventata"
+          },
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": null,
+            "actual_path": "rows[2].operator",
+            "expected": null,
+            "actual": "Alias fittizio"
+          },
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": null,
+            "actual_path": "rows[2].plate",
+            "expected": null,
+            "actual": "ZZ999ZZ"
+          },
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": null,
+            "actual_path": "rows[2].secco_kg",
+            "expected": null,
+            "actual": 9
+          },
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": null,
+            "actual_path": "rows[2].umido_kg",
+            "expected": null,
+            "actual": 1
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "reordering",
+      "case_id": "B001",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Settore Ambra",
+            "operator": "Alias S02",
+            "plate": "ZZ102ZZ",
+            "secco_kg": 219,
+            "umido_kg": 41
+          },
+          {
+            "area": "Settore Quarzo",
+            "operator": "Alias S01",
+            "plate": "ZZ101ZZ",
+            "secco_kg": 137,
+            "umido_kg": 23
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B001",
+        "deterministic": {
+          "fixture": "B001",
+          "row_differences": {
+            "missing_or_changed": 0,
+            "unexpected_or_changed": 0
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 11,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 0,
+          "invented_values": 0,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": true,
+          "exact_field_rate": 1
+        },
+        "alignment": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "differences": [],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "invented_date",
+      "case_id": "B017",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Zona Betulla",
+            "operator": "Alias S25",
+            "plate": null,
+            "secco_kg": 227,
+            "umido_kg": null
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B017",
+        "deterministic": {
+          "fixture": "B017",
+          "row_differences": {
+            "missing_or_changed": 0,
+            "unexpected_or_changed": 0
+          },
+          "checks": {
+            "date_exact": false,
+            "rows_exact": true,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 6,
+          "exact_fields": 5,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 0,
+          "invented_values": 1,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.8333333333333334
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "INVENTED_VALUE",
+            "expected_path": "date",
+            "actual_path": "date",
+            "expected": null,
+            "actual": "2026-11-04"
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    },
+    {
+      "id": "territorial_normalization",
+      "case_id": "B005",
+      "injected_result": {
+        "date": "2026-11-04",
+        "rows": [
+          {
+            "area": "Agro nocerino-sarnese",
+            "operator": "Alias S09",
+            "plate": null,
+            "secco_kg": 126,
+            "umido_kg": null
+          },
+          {
+            "area": "Agro nocerino-sarnese",
+            "operator": "Alias S10",
+            "plate": null,
+            "secco_kg": 127,
+            "umido_kg": null
+          }
+        ],
+        "anomalies": []
+      },
+      "comparison": {
+        "case_id": "B005",
+        "deterministic": {
+          "fixture": "B005",
+          "row_differences": {
+            "missing_or_changed": 1,
+            "unexpected_or_changed": 1
+          },
+          "checks": {
+            "date_exact": true,
+            "rows_exact": false,
+            "conflict_flag_present": true,
+            "review_required": true,
+            "import_disabled": true
+          },
+          "passed": false,
+          "limitation": "Confronto offline con riferimenti sintetici; righe modificate contano sia mancanti sia inattese; significato delle anomalie da revisionare. Non misura accuratezza operativa."
+        },
+        "metrics": {
+          "expected_fields": 11,
+          "exact_fields": 10,
+          "omitted_fields": 0,
+          "omitted_known_values": 0,
+          "altered_values": 1,
+          "invented_values": 0,
+          "missing_rows": 0,
+          "extra_rows": 0,
+          "reordered": false,
+          "exact_field_rate": 0.9090909090909091
+        },
+        "alignment": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "differences": [
+          {
+            "kind": "ALTERED_VALUE",
+            "expected_path": "rows[0].area",
+            "actual_path": "rows[0].area",
+            "expected": "Agro",
+            "actual": "Agro nocerino-sarnese"
+          }
+        ],
+        "semantic_review_status": "PENDING",
+        "required_anomaly_concepts": [],
+        "anomaly_presence_only": true,
+        "model_accuracy_status": "NOT_VALIDATED",
+        "review_required": true,
+        "eligible_for_import": false
+      },
+      "detected_as_expected": true
+    }
+  ],
+  "passed": true
+}
