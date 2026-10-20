@@ -4,8 +4,11 @@ const fs = require('node:fs');
 const expected = require('./expected.json');
 const { validate } = require('./client');
 function evaluate(report, fixture) {
-  const target = expected[fixture];
   if (!Object.hasOwn(expected, fixture)) throw new Error('UNKNOWN_FIXTURE');
+  return evaluateTarget(report, expected[fixture], fixture);
+}
+// Reuse the original checks with a separate, explicitly supplied reference.
+function evaluateTarget(report, target, fixture = 'external-reference') {
   validate(report.result);
   const checks = {
     date_exact: report.result.date === target.date,
@@ -31,4 +34,4 @@ if (require.main === module) {
     if (!result.passed) process.exitCode = 1;
   } catch { console.error('EVALUATION_FAILED'); process.exitCode = 1; }
 }
-module.exports = { evaluate };
+module.exports = { evaluate, evaluateTarget };

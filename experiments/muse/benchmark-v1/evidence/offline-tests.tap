@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: historical v3 conflict replay verifies input/result hashes without impersonating a new call
+ok 1 - historical v3 conflict replay verifies input/result hashes without impersonating a new call
+  ---
+  duration_ms: 2.416598
+  type: 'test'
+  ...
+# Subtest: recorded rejected v2 response still fails schema validation
+ok 2 - recorded rejected v2 response still fails schema validation
+  ---
+  duration_ms: 0.561784
+  type: 'test'
+  ...
+# Subtest: omission, conflict collapse, reordering and invented null replacements fail exact comparison
+ok 3 - omission, conflict collapse, reordering and invented null replacements fail exact comparison
+  ---
+  duration_ms: 0.667762
+  type: 'test'
+  ...
+# Subtest: identical repeated communications remain two rows, no deduplication
+ok 4 - identical repeated communications remain two rows, no deduplication
+  ---
+  duration_ms: 0.193788
+  type: 'test'
+  ...
+# Subtest: any arbitrary anomaly does not compensate for an omitted conflict row
+ok 5 - any arbitrary anomaly does not compensate for an omitted conflict row
+  ---
+  duration_ms: 0.175751
+  type: 'test'
+  ...
+# Subtest: simulated transport preserves exact original source and prompt, including whitespace and blank lines
+ok 6 - simulated transport preserves exact original source and prompt, including whitespace and blank lines
+  ---
+  duration_ms: 1.048006
+  type: 'test'
+  ...
+# Subtest: frozen corpus has at least 30 unique sources separate from legacy fixtures
+ok 7 - frozen corpus has at least 30 unique sources separate from legacy fixtures
+  ---
+  duration_ms: 5.437163
+  type: 'test'
+  ...
+# Subtest: 36 synthetic oracle controls and 12 injected failures verify the scorer, not Muse
+ok 8 - 36 synthetic oracle controls and 12 injected failures verify the scorer, not Muse
+  ---
+  duration_ms: 12.180064
+  type: 'test'
+  ...
+# Subtest: insertion or omission does not turn all following exact rows into alterations
+ok 9 - insertion or omission does not turn all following exact rows into alterations
+  ---
+  duration_ms: 0.276581
+  type: 'test'
+  ...
+# Subtest: extra duplicate, even containing nulls, fails exactness and preserves multiplicity
+ok 10 - extra duplicate, even containing nulls, fails exactness and preserves multiplicity
+  ---
+  duration_ms: 0.227508
+  type: 'test'
+  ...
+# Subtest: an irrelevant anomaly can satisfy presence only, never semantic validation
+ok 11 - an irrelevant anomaly can satisfy presence only, never semantic validation
+  ---
+  duration_ms: 0.403759
+  type: 'test'
+  ...
+# Subtest: provenance rejects wrong case, prompt, model, modality, unsafe flags and hashes
+ok 12 - provenance rejects wrong case, prompt, model, modality, unsafe flags and hashes
+  ---
+  duration_ms: 0.643715
+  type: 'test'
+  ...
+# Subtest: invalid schema is rejected before detailed scoring
+ok 13 - invalid schema is rejected before detailed scoring
+  ---
+  duration_ms: 0.394856
+  type: 'test'
+  ...
+# Subtest: empty evaluation has null accuracy and cost, with full missing coverage visible
+ok 14 - empty evaluation has null accuracy and cost, with full missing coverage visible
+  ---
+  duration_ms: 2.534743
+  type: 'test'
+  ...
+# Subtest: simulated reports cannot be included as LIVE evidence
+ok 15 - simulated reports cannot be included as LIVE evidence
+  ---
+  duration_ms: 2.067289
+  type: 'test'
+  ...
+# Subtest: failed and malformed attempts stay in denominators and cost remains unknown
+ok 16 - failed and malformed attempts stay in denominators and cost remains unknown
+  ---
+  duration_ms: 2.831013
+  type: 'test'
+  ...
+# Subtest: duplicate run IDs rejected, variability requires distinct valid runs
+ok 17 - duplicate run IDs rejected, variability requires distinct valid runs
+  ---
+  duration_ms: 5.65783
+  type: 'test'
+  ...
+# Subtest: prepare creates source-only inputs and refuses overwriting an existing experiment
+ok 18 - prepare creates source-only inputs and refuses overwriting an existing experiment
+  ---
+  duration_ms: 4.45241
+  type: 'test'
+  ...
+# Subtest: disabled and missing credentials prevent every network call
+ok 19 - disabled and missing credentials prevent every network call
+  ---
+  duration_ms: 1.927632
+  type: 'test'
+  ...
+# Subtest: oversized inputs and invalid images fail before the network
+ok 20 - oversized inputs and invalid images fail before the network
+  ---
+  duration_ms: 0.825135
+  type: 'test'
+  ...
+# Subtest: request pins model, caps tokens, forbids redirects and sends no tools
+ok 21 - request pins model, caps tokens, forbids redirects and sends no tools
+  ---
+  duration_ms: 2.084004
+  type: 'test'
+  ...
+# Subtest: missing values remain null and every output requires review
+ok 22 - missing values remain null and every output requires review
+  ---
+  duration_ms: 1.94626
+  type: 'test'
+  ...
+# Subtest: image payload and distinct image hash are captured
+ok 23 - image payload and distinct image hash are captured
+  ---
+  duration_ms: 0.7271
+  type: 'test'
+  ...
+# Subtest: provider errors never expose response bodies or credentials
+ok 24 - provider errors never expose response bodies or credentials
+  ---
+  duration_ms: 0.501024
+  type: 'test'
+  ...
+# Subtest: truncation, substituted model and tool calls are rejected
+ok 25 - truncation, substituted model and tool calls are rejected
+  ---
+  duration_ms: 2.118245
+  type: 'test'
+  ...
+# Subtest: malformed JSON and invalid structured values fail closed
+ok 26 - malformed JSON and invalid structured values fail closed
+  ---
+  duration_ms: 0.834519
+  type: 'test'
+  ...
+# Subtest: fixture evaluator catches invented missing values and collapsed conflicts
+ok 27 - fixture evaluator catches invented missing values and collapsed conflicts
+  ---
+  duration_ms: 0.601312
+  type: 'test'
+  ...
+# Subtest: CLI refuses overwrite and leaves input and existing evidence intact
+ok 28 - CLI refuses overwrite and leaves input and existing evidence intact
+  ---
+  duration_ms: 122.821228
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 230.908655

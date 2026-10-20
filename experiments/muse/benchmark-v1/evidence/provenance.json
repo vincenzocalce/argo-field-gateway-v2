@@ -1,0 +1,28 @@
+{
+  "recorded_at_utc": "2026-10-20T13:32:23.626761+00:00",
+  "runtime": "Node v24.19.0",
+  "base_commit": "3e436ac021fb04314de70fab37f24231439c4c2a",
+  "tests": {
+    "command": "node --test --test-reporter=tap experiments/muse/*.test.js",
+    "passed": 28,
+    "failed": 0,
+    "legacy_tests": 16,
+    "new_tests": 12
+  },
+  "synthetic_controls": {
+    "exact_oracles": 36,
+    "deliberate_mutations": 12,
+    "all_passed": true
+  },
+  "live_attempts": 0,
+  "planned_live_attempts": 108,
+  "independently_reviewed_references": 0,
+  "model_accuracy_status": "NOT_VALIDATED",
+  "review_required": true,
+  "eligible_for_import": false,
+  "evidence_sha256": {
+    "offline-tests.tap": "286fc774989a766c58104d5c7a1dc78cec4164c4db20ee9a12c3c80869647334",
+    "pending-live-evaluation.json": "4d0b453d5f0de36f7fbf503ad3cddc68373281e8225fda2749d090a55cf3af26",
+    "self-check.json": "cc881b1cca1361b1161b25a1cf68101c7f1d1b2446cc9a91648d857141a3e9ff"
+  }
+}
