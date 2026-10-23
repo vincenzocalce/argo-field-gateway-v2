@@ -3,6 +3,15 @@
 Stato T0: **REVIEW_REQUIRED**. La patch e i test locali non costituiscono
 verifica del dominio pubblico, TLS, entitlement o apertura dell'app iOS.
 
+## Procedura corrente — 23/10/2026
+
+Vedi [proposta di correzione condizionata alla firma](AASA-CORRECTION.md) e
+[evidenze HTTP aggiornate](evidence/vin-7/2026-10-23/README.md). Il pubblico
+www serve ancora `paths:["*"]`; l'apex redirige. Il riferimento operativo resta
+`www.seagroup.info` e il callback esatto. I build settings storici non provano
+l'AppID firmato. Il preparatore copia il candidato solo dopo il confronto della
+firma dichiarata e la conferma del ricevitore; nessuna pubblicazione automatica.
+
 ## Verificatore VIN-7 — 18/10/2026
 
 Disponibile il [verificatore riproducibile](UNIVERSAL-LINKS-VERIFIER.md) per
@@ -84,34 +93,29 @@ sintetico temporaneo; aggiunti verifica isolamento AASA/log 5V e rifiuto sottope
 CI aggiunge integration-aasa sulla stessa revisione evento degli altri job integration.
 Gli errori 400/413/abort prodotti dai test negativi 5V sono attesi.
 
-## Gate di rilascio ancora aperti
+## Gate di rilascio ancora aperti — riferimento corrente www
 
-1. Confermare che seagroup.info sia l'host definitivo del link e instradare questo
-   specifico endpoint al gateway (o pubblicare lo stesso JSON sull'host).
-   Un endpoint sul solo dominio Render non associa automaticamente seagroup.info.
-2. Verificare HTTPS, catena TLS attendibile e risposta pubblica diretta senza
-   redirect a www, login, slash finale o altro host. Il reverse proxy/CDN deve
-   preservare JSON e MIME; controllare anche eventuali cache.
-3. Nella build iOS firmata verificare application-identifier =
-   N6JGN24QMU.it.vincenzocalce.argo.wearable e Associated Domains =
-   applinks:seagroup.info, se questo è il dominio confermato.
-4. Verificare su dispositivo reale un link da Notes/Mail verso
-   https://seagroup.info/argo/wearable/callback, la consegna all'app e la gestione
-   del callback; verificare anche che un percorso estraneo non sia associato.
-   Considerare la cache AASA Apple durante reinstallazione/aggiornamento.
-5. Allegare evidenze con data UTC, commit distribuito, host, header/body,
-   verifica TLS, build/entitlement e risultato dispositivo prima di T0 PASS.
+1. Accertare l'app ricevente e gli entitlements della stessa build firmata
+   installata sul dispositivo. Non dedurre l'AppID dai build settings.
+2. Seguire [AASA-CORRECTION.md](AASA-CORRECTION.md) per preparare il candidato
+   dopo il confronto dell'identità; la sua pubblicazione richiede un'azione
+   successiva autorizzata sul virtual host `www.seagroup.info`.
+3. Verificare AASA HTTPS pubblico diretto 200/application/json senza Location;
+   correggere separatamente il redirect HTTP/slash del callback esatto.
+4. Verificare `applinks:www.seagroup.info`, matcher Apple/CDN, handler e prove
+   positive/negative su iPhone reale. L'apex non viene aggiunto automaticamente.
+5. Acquisire data, host, versione pubblicata, hash AASA e build, entitlements
+   ed esiti dispositivo prima di qualsiasi decisione T0 PASS.
 
-Controllo pubblico manuale dopo deploy (non usare -L o -k):
+Controllo pubblico riproducibile (sola lettura, nessun redirect seguito):
 
 ```sh
-curl --silent --show-error --max-redirs 0 --dump-header /tmp/argo-aasa.headers --output /tmp/argo-aasa.body https://seagroup.info/.well-known/apple-app-site-association
-cat /tmp/argo-aasa.headers
-node -e 'console.log(JSON.parse(require("node:fs").readFileSync("/tmp/argo-aasa.body", "utf8")))'
+python3 tools/universal_links/verify.py --fetch \
+  --out universal-links-results/public-recheck
 ```
 
-Il solo exit code di curl non prova il successo: verificare 200, application/json,
-assenza di Location e confronto integrale con il JSON della patch.
+Il risultato statico, anche senza incompatibilità, non chiude il gate.
+Le citazioni dell'apex nelle sezioni datate sopra sono provenienza storica.
 
 ## Provenienza
 
