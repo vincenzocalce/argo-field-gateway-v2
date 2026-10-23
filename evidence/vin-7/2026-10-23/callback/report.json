@@ -1,0 +1,12 @@
+{
+  "url": "https://www.seagroup.info/argo/wearable/callback",
+  "capturedAt": "2026-10-23T21:36:56.074870+00:00",
+  "redirectsFollowed": false,
+  "method": "GET",
+  "status": 301,
+  "contentType": "text/html; charset=iso-8859-1",
+  "location": "http://www.seagroup.info/argo/wearable/callback/",
+  "tls": "system-trust-accepted",
+  "bytesRead": 297,
+  "sha256": "d4bba9503b78ba7579231bd81995ebb6ec577821ce20ef9ec9f605e17fadf9b7"
+}

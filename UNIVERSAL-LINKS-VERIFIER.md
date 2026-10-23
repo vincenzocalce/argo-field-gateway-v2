@@ -5,6 +5,13 @@ documentato, un JSON AASA e, quando disponibile, un manifest acquisito dalla
 `.app` firmata. Non implementa il matcher Apple e non dichiara T0 superato.
 Non modifica AASA, DNS, server pubblico, firma, app o impostazioni Meta.
 
+## Preparazione della correzione — 23/10/2026
+
+La [procedura corrente](AASA-CORRECTION.md) distingue contratto, firma e hosting.
+`prepare_correction.py` riusa questo verificatore per copiare un candidato locale
+solo con manifest coerente e conferma dell'app ricevente. Non modifica l'AASA
+servito e non distribuisce file. Il gate resta aperto anche con exit 0.
+
 ## Contratto e provenienza
 
 Il riferimento è la riconciliazione VIN-7 del 14/10, confermata dall'audit del

@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+date: Fri, 23 Oct 2026 21:35:22 GMT
+
+HTTP/2 200 
+server: envoy
+date: Fri, 23 Oct 2026 21:35:23 GMT
+content-type: application/json
+content-length: 167
+last-modified: Wed, 23 Sep 2026 09:04:36 GMT
+accept-ranges: bytes
+x-servername: webx.aruba.it
+alt-svc: h3=":443"; ma=86400
+x-envoy-upstream-service-time: 1248
+

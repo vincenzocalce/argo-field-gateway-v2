@@ -1,0 +1,3 @@
+# Preserve the original HTTP bytes (including CRLF) for reproducible hashes.
+evidence/vin-7/2026-10-23/apex/aasa.body -text -diff
+evidence/vin-7/2026-10-23/public/curl.headers -text -diff

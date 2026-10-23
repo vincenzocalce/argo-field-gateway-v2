@@ -1,0 +1,38 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> argo-field-gateway-v2@1.0.0 test:universal-links
+> python3 -m unittest discover -s tools/universal_links -p 'test_*.py' -v
+
+test_cli_outputs_report_exit_codes_and_preserves_evidence (test_verify.AcquisitionAndCliTests.test_cli_outputs_report_exit_codes_and_preserves_evidence) ... ok
+test_http_error_body_is_preserved_without_following (test_verify.AcquisitionAndCliTests.test_http_error_body_is_preserved_without_following) ... ok
+test_network_error_has_no_fabricated_body (test_verify.AcquisitionAndCliTests.test_network_error_has_no_fabricated_body) ... ok
+test_redirect_handler_never_follows (test_verify.AcquisitionAndCliTests.test_redirect_handler_never_follows) ... ok
+test_all_unauthorized_legacy_paths_rejected (test_verify.ContractTests.test_all_unauthorized_legacy_paths_rejected) ... ok
+test_callback_query_and_fragment_allowed_variants_rejected (test_verify.ContractTests.test_callback_query_and_fragment_allowed_variants_rejected) ... ok
+test_comment_does_not_change_rule (test_verify.ContractTests.test_comment_does_not_change_rule) ... ok
+test_components_reject_broadening_restrictions_and_unknown_modifiers (test_verify.ContractTests.test_components_reject_broadening_restrictions_and_unknown_modifiers) ... ok
+test_duplicate_keys_non_json_and_oversize_rejected (test_verify.ContractTests.test_duplicate_keys_non_json_and_oversize_rejected) ... ok
+test_extra_grants_and_exclusions_cannot_be_hidden (test_verify.ContractTests.test_extra_grants_and_exclusions_cannot_be_hidden) ... ok
+test_failed_fetch_is_missing_not_site_failure (test_verify.ContractTests.test_failed_fetch_is_missing_not_site_failure) ... ok
+test_http_status_mime_redirect (test_verify.ContractTests.test_http_status_mime_redirect) ... ok
+test_legacy_exact_supported (test_verify.ContractTests.test_legacy_exact_supported) ... ok
+test_malformed_and_ambiguous_schemas_rejected (test_verify.ContractTests.test_malformed_and_ambiguous_schemas_rejected) ... ok
+test_repository_document_is_exact_but_gate_open (test_verify.ContractTests.test_repository_document_is_exact_but_gate_open) ... ok
+test_unknown_options_require_review (test_verify.ContractTests.test_unknown_options_require_review) ... ok
+test_wrong_app_id_is_not_a_match (test_verify.ContractTests.test_wrong_app_id_is_not_a_match) ... ok
+test_coherent_manifest_never_passes_gate (test_verify.SignedBuildTests.test_coherent_manifest_never_passes_gate) ... ok
+test_collector_command_pipeline_simulated_not_real_codesign (test_verify.SignedBuildTests.test_collector_command_pipeline_simulated_not_real_codesign) ... ok
+test_collector_failed_codesign_does_not_write_manifest (test_verify.SignedBuildTests.test_collector_failed_codesign_does_not_write_manifest) ... ok
+test_collector_filters_private_profile_material (test_verify.SignedBuildTests.test_collector_filters_private_profile_material) ... ok
+test_collector_refuses_non_mac_without_creating_output (test_verify.SignedBuildTests.test_collector_refuses_non_mac_without_creating_output) ... ok
+test_entitlements_require_exact_domain_ordinary_mode (test_verify.SignedBuildTests.test_entitlements_require_exact_domain_ordinary_mode) ... ok
+test_incomplete_manifest_and_failed_signature (test_verify.SignedBuildTests.test_incomplete_manifest_and_failed_signature) ... ok
+test_mistyped_attestation_and_invalid_trace_fields_are_not_matches (test_verify.SignedBuildTests.test_mistyped_attestation_and_invalid_trace_fields_are_not_matches) ... ok
+test_prefix_is_not_inferred_from_team (test_verify.SignedBuildTests.test_prefix_is_not_inferred_from_team) ... ok
+test_profile_prefix_mismatch_and_wildcard_are_distinct_from_aasa (test_verify.SignedBuildTests.test_profile_prefix_mismatch_and_wildcard_are_distinct_from_aasa) ... ok
+test_team_and_bundle_mismatch_detected_separately (test_verify.SignedBuildTests.test_team_and_bundle_mismatch_detected_separately) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.015s
+
+OK
