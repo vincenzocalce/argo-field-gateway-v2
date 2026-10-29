@@ -1,56 +1,66 @@
-const express = require("express");
+const { missionReference } = require("./src/privacy");
+const { validateVerifyToken } = require("./src/config");
+const { createApp } = require("./src/app");
+const { createDatabase, ensureSchema, getDatabaseDiagnostics } = require("./src/database");
+const { createZenitClient } = require("./src/zenit-client");
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-const VERIFY_TOKEN = process.env.VERIFY_TOKEN || "argo-test-token";
+async function start({ env = process.env, logger = console,
+  databaseFactory = createDatabase, schemaInitializer = ensureSchema,
+  diagnosticsReader = getDatabaseDiagnostics, zenitFactory = createZenitClient } = {}) {
+  // Fail before constructing a Pool, performing SQL or opening an HTTP listener.
+  const verifyToken = validateVerifyToken(env.VERIFY_TOKEN);
+  const database = databaseFactory(env.DATABASE_URL);
+  let zenitClient;
+  let server;
+  try {
+    zenitClient = zenitFactory({ apiKey: env.ZENIT_API_KEY, baseUrl: env.ZENIT_API_BASE_URL });
+    if (database) {
+      await schemaInitializer(database);
+      const diagnostics = await diagnosticsReader(database);
+      logger.log(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        event: "database_diagnostics",
+        total_rows: diagnostics.total_rows,
+        distinct_ids: diagnostics.distinct_ids,
+        duplicate_rows: diagnostics.duplicate_rows,
+        latest_created_at: diagnostics.latest_created_at,
+        recent_mission_refs: diagnostics.recent_missions.map((mission) => ({
+          mission_ref: missionReference(mission.id),
+          created_at: mission.created_at
+        }))
+      }));
+    } else {
+      logger.warn("DATABASE_URL non configurata: le API missioni risponderanno 503");
+    }
+    if (!zenitClient) logger.warn("ZENIT_API_KEY non configurata: le API telemetria risponderanno 503");
 
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.json({
-    status: "ok",
-    service: "argo-field-gateway-v2"
-  });
-});
-
-app.get("/webhook", (req, res) => {
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
-
-  if (mode === "subscribe" && token === VERIFY_TOKEN) {
-    console.log("Webhook verificato correttamente");
-    return res.status(200).send(challenge);
+    const app = createApp({ database, apiToken: env.ARGO_API_TOKEN, verifyToken, zenitClient, logger });
+    const port = env.PORT || 3000;
+    await new Promise((resolve, reject) => {
+      server = app.listen(port, resolve);
+      server.once("error", reject);
+    });
+    logger.log(`ARGO Field Gateway v2 attivo sulla porta ${server.address().port}`);
+    return { app, server, database };
+  } catch (error) {
+    if (server?.listening) await new Promise(resolve => server.close(resolve));
+    if (database?.end) await database.end().catch(() => {});
+    throw error;
   }
+}
 
-  console.log("Verifica webhook fallita");
-  return res.sendStatus(403);
-});
+// One factory, available through both imports; importing never starts SQL/HTTP.
+module.exports = { createApp, start };
 
-app.post("/webhook", (req, res) => {
-  console.log("Messaggio ricevuto da Meta/WhatsApp:");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  res.sendStatus(200);
-});
-app.get("/argo/wearable/callback", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    service: "argo-field-gateway-v2",
-    channel: "wearable",
-    endpoint: "/argo/wearable/callback"
+if (require.main === module) {
+  start().catch(() => {
+    // No connection URL, database error detail or token value on stderr.
+    const token = process.env.VERIFY_TOKEN;
+    if (typeof token !== "string" || token.trim().length === 0) {
+      console.error("Configurazione non valida: VERIFY_TOKEN è obbligatorio e non può essere vuoto.");
+    } else {
+      console.error("Avvio ARGO non riuscito: verificare configurazione e disponibilità del database.");
+    }
+    process.exitCode = 1;
   });
-});
-
-app.post("/argo/wearable/callback", (req, res) => {
-  console.log("Wearable callback ricevuta:");
-  console.log(JSON.stringify(req.body, null, 2));
-
-  res.status(200).json({
-    status: "received",
-    channel: "wearable"
-  });
-});
-app.listen(PORT, () => {
-  console.log("ARGO Field Gateway v2 attivo sulla porta " + PORT);
-});
+}

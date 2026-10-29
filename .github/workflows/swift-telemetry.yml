@@ -1,0 +1,15 @@
+name: Swift telemetry simulated responses
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  swift-package:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - run: swift --version
+      - run: swift test --package-path ios

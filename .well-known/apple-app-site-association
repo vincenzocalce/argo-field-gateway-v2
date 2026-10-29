@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["N6JGN24QMU.it.vincenzocalce.argo.wearable"],
+        "components": [
+          { "/": "/argo/wearable/callback" }
+        ]
+      }
+    ]
+  }
+}
