@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-18T17:47:49.302394+00:00",
+  "contract": {
+    "domain": "www.seagroup.info",
+    "path": "/argo/wearable/callback",
+    "applicationIdentifier": "N6JGN24QMU.it.vincenzocalce.argo.wearable",
+    "bundleIdentifier": "it.vincenzocalce.argo.wearable",
+    "teamIdentifier": "N6JGN24QMU"
+  },
+  "source": {
+    "kind": "local-file",
+    "file": "tools/universal_links/fixtures/public-2026-10-14.transcribed.json"
+  },
+  "aasaSHA256": "63d7d7cab9003d279c0a88914084a7d1ede68fef8b9a4f4f077def2f3e4b0848",
+  "transport": null,
+  "result": "INCOMPATIBLE",
+  "gate": "OPEN — REVIEW_REQUIRED",
+  "findings": [
+    {
+      "check": "domain.contract",
+      "status": "MATCH",
+      "message": "www.seagroup.info"
+    },
+    {
+      "check": "callback.url",
+      "status": "MATCH",
+      "message": "HTTPS, host e percorso esatti; query/frammento non vincolati."
+    },
+    {
+      "check": "aasa.publication",
+      "status": "MISSING",
+      "message": "JSON locale: host, HTTP, TLS e pubblicazione non verificati."
+    },
+    {
+      "check": "aasa.json",
+      "status": "MATCH",
+      "message": "JSON valido, chiavi uniche, dimensione entro 128 KiB."
+    },
+    {
+      "check": "aasa.details.0.identity",
+      "status": "MATCH",
+      "message": "N6JGN24QMU.it.vincenzocalce.argo.wearable"
+    },
+    {
+      "check": "aasa.details.0.paths",
+      "status": "INCOMPATIBLE",
+      "message": "paths deve contenere solo il callback esatto, senza wildcard o esclusioni."
+    },
+    {
+      "check": "aasa.applicationIdentifier",
+      "status": "MATCH",
+      "message": "N6JGN24QMU.it.vincenzocalce.argo.wearable"
+    },
+    {
+      "check": "build.signedEvidence",
+      "status": "MISSING",
+      "message": "Acquisire la .app firmata su Mac con collect_signed_build.py."
+    },
+    {
+      "check": "apple.matcher",
+      "status": "MISSING",
+      "message": "swcutil sul Mac: positivi e negativi, poi confronto origine/CDN Apple."
+    },
+    {
+      "check": "iphone.endToEnd",
+      "status": "MISSING",
+      "message": "Stessa build installata: apertura da Note, avvio freddo/caldo, URL nell'handler e negativi."
+    },
+    {
+      "check": "wearable.configuration",
+      "status": "MISSING",
+      "message": "Confermare app ricevente e URL effettivo configurato in Meta."
+    }
+  ]
+}
